@@ -1,0 +1,19 @@
+create table annonse(
+id integer not null,
+overskrift varchar(100) not null,
+innhold varchar(21000) not null,
+bilde varchar(250) not null,
+kategori varchar(30) not null,
+viktighet smallint not null);
+
+Verdier vi setter inn:
+insert into annonse ( overskrift, innhold, bilde, kategori, viktighet) values
+('tittel 1', 'tekst til nr 1', 'https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497','Sport',1)
+insert into annonse ( overskrift, innhold, bilde, kategori, viktighet) values
+('tittel 2', 'tekst til nr 2', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Saturn_eclipse.jpg/350px-Saturn_eclipse.jpg','Mat',2)
+insert into annonse ( overskrift, innhold, bilde, kategori, viktighet) values
+('tittel 3', 'tekst til nr 3', 'https://images.matprat.no/8n4h4qe4u6-jumbotron/xsmall','Mat',1)
+
+Select overskrift, innhold, kategori from annonse where id ?
+
+{"overskrift": "ny tittel", "innhold": "Nytt innhold", "Bilde":"", "kategori": "Sport", "viktighet":"1"
