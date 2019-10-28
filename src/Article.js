@@ -6,17 +6,15 @@ export class Article {
   pictureAlt: string;
   pictureCapt: string;
   text: string;
-  tags: string[];
   date: Date;
   author: string;
 
-  constructor(title: string, picturePath: string, pictureAlt: string, pictureCapt: string, text: string, tags: string[], date: Date, author: string) {
+  constructor(title: string, picturePath: string, pictureAlt: string, pictureCapt: string, text: string, date: Date, author: string) {
     this.title = title;
     this.picturePath = picturePath;
     this.pictureCapt = pictureCapt;
     this.pictureAlt = pictureAlt;
     this.text = text;
-    this.tags = tags;
     this.date = date;
     this.author = author;
   }

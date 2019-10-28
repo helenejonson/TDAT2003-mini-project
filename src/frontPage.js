@@ -13,9 +13,9 @@ export class Home extends Component {
         var date = new Date("2017-01-26");
 
         var l =[
-            new Article("Oh no they comin!", "img/logo.png", "eeg", "Dont need dis","Do Do" ,tag, date, "Maria McC" ),
-            new Article("Oh they comin!", "img/logo.png", "art", "Dont need dis","Do Do" , tag, date, "Maria McC" ),
-            new Article("Oh no they comin!", "img/logo.png", "square", "Dont need dis","Do Do" , tag, date, "Maria McC" ),
+            new Article("Oh no they comin!", "img/logo.png", "eeg", "Dont need dis","Do Do" , date, "Maria McC" ),
+            new Article("Oh they comin!", "img/logo.png", "art", "Dont need dis","Do Do" , date, "Maria McC" ),
+            new Article("Oh no they comin!", "img/logo.png", "square", "Dont need dis","Do Do" , date, "Maria McC" ),
         ];
 
         return (
@@ -41,7 +41,6 @@ export class Home extends Component {
                 </div>
 
             </div>
-            <foot></foot>
             </div>
         );
     }

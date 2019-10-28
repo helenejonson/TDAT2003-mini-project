@@ -6,6 +6,12 @@ import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import {Article} from "./Article";
 import {Menu}  from './index';
+import {CategoryList} from "./Category";
+import {NavLink} from "react-router-dom";
+
+var categories = CategoryList().map(e => e.name);
+
+
 
 export class ArticleEditor extends Component<{ match: { params: { id: number } } }> {
   article: Article = new Article(
@@ -14,7 +20,6 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
     'an eagle',
     'lol',
     '',
-    ['bullshit', 'stuff'],
     new Date(),
     'somebody'
   );
@@ -82,15 +87,17 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
             <label htmlFor="category">Category</label>
             <select className="custom-select" id="category">
               <option selected>Select category...</option>
-              <option value="1">Books</option>
-              <option value="2">Series</option>
-              <option value="3">Games</option>
+              {categories.map(e =>(
+                        <option value='1'>{e}</option>
+                  )
+              )}
             </select>
           </div>
-          <div className="col-10">
-            <label htmlFor="tags">Tags</label>
-            <input id="tags" className="form-control" type="text" placeholder="tag1, tag2, tag3..." aria-describedby="tagHelp"/>
-            <small id="tagHelp" className="form-text text-muted">Let people find your article by providing specific tags</small>
+        </div>
+        <div className='importance'>
+          <div className="form-check form-check-inline">
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"/>
+            <label className="form-check-label" htmlFor="inlineCheckbox1">Important?</label>
           </div>
         </div>
         <button type="submit" className="btn btn-primary">Upload</button>

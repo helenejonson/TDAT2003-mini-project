@@ -4,6 +4,7 @@ import {Article} from "./Article";
 import * as React from 'react';
 import {Component} from 'react-simplified';
 import MarkdownRenderer from 'react-markdown-renderer';
+import {Menu} from "./index";
 
 
 let tekst = '**Lorem ipsum dolor sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Quam vulputate dignissim suspendisse in. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Ultricies mi eget mauris pharetra et. In hendrerit gravida rutrum quisque non tellus. Diam maecenas sed enim ut. Suspendisse in est ante in nibh mauris cursus. Laoreet id donec ultrices tincidunt arcu non sodales neque sodales. Amet est placerat in egestas.\n' +
@@ -23,29 +24,32 @@ export class Read extends Component {
         let article = this.article
         return(
             <div>
-                <h1> {article.title} </h1>
-                <figure>
-                    <img src={article.picturePath} alt={article.pictureAlt} />
-                        <figcaption>{article.pictureCapt}</figcaption>
-                </figure>
-                {/* for å gi oss formatert versjon av teksten */}
-                <MarkdownRenderer markdown={article.text} />
-                <p> {article.tags} </p>
-                <p> {article.date.toDateString()}</p>
-                <p> {article.author}</p>
-                <div className="kommentarer">
-                    <h3>Kommentarer</h3>
-                    <div>
-                        <button>Ny kommentar</button>
-                        <div className="kommentar">
-                            <h4>Ola Nordman</h4>
-                            <p>Duis varius hendrerit sem, nec ornare mauris interdum at.</p>
+                <Menu/>
+                <div class= 'readArticle'>
+                    <h1> {article.title} </h1>
+                    <figure>
+                        <img src={article.picturePath} alt={article.pictureAlt} />
+                            <figcaption>{article.pictureCapt}</figcaption>
+                    </figure>
+                    {/* for å gi oss formatert versjon av teksten */}
+                    <MarkdownRenderer markdown={article.text} />
+                    <p> {article.tags} </p>
+                    <p> {article.date.toDateString()}</p>
+                    <p> {article.author}</p>
+                    <div className="kommentarer">
+                        <h3>Comments</h3>
+                        <div className='comment'>
+                            <button className='newComment'>Ny kommentar</button>
+                            <div className="kommentar">
+                                <h4>Ola Nordman</h4>
+                                <p>Duis varius hendrerit sem, nec ornare mauris interdum at.</p>
+                            </div>
+                            <div className="kommentar">
+                                <h4>Kari Nordman</h4>
+                                <p>Quisque dignissim tortor nunc, sit amet consectetur mi iaculis eu.</p>
+                            </div>
+                            <button>Flere kommentarer</button>
                         </div>
-                        <div className="kommentar">
-                            <h4>Kari Nordman</h4>
-                            <p>Quisque dignissim tortor nunc, sit amet consectetur mi iaculis eu.</p>
-                        </div>
-                        <button>Flere kommentarer</button>
                     </div>
                 </div>
             </div>

@@ -5,9 +5,10 @@ import ReactDOM from 'react-dom';
 import * as React from 'react';
 import {Component} from 'react-simplified';
 import {Menu} from './index';
+import {CategoryList} from "./Category";
 
 
-var categories = ['Movies', 'Books', 'New', 'MTG', 'D&D', 'Anime'];
+var categories = CategoryList().map(e => e.name);
 
 var tags = ["Fantasy","Strategy","Co-op", "Single-player", "tags", "new tag", "another tag", "last tag"];
 
@@ -49,24 +50,18 @@ export class AdvancedSearch extends Component{
                             <label className="form-check-label" htmlFor="inlineCheckbox1">{tag}</label>
                         </div>
                     ))}
-                    <h4>Dato</h4>
+                    <h4>Date</h4>
+                    <h7>Write in fromat YYYY-MM-DD</h7>
                     <form>
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control" placeholder="Fra dato"/>
+                                <input type="text" className="form-control" placeholder="From date"/>
                             </div>
                             <div className="col">
-                                <input type="text" className="form-control" placeholder="Til dato"/>
+                                <input type="text" className="form-control" placeholder="From date"/>
                             </div>
                         </div>
                     </form>
-                    <h2>Tags</h2>
-                    {tags.map(tag => (
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"/>
-                            <label className="form-check-label" htmlFor="inlineCheckbox1">{tag}</label>
-                        </div>
-                    ))}
                     <br/>
                     <button type="button" className="btn btn-primary">Lagre søk</button>
                 </div>
@@ -87,7 +82,7 @@ export class AdvancedSearch2 extends Component{
         return (
             <div>
                 <Menu/>
-                <div className="advancedSearch" ref={e => this.blabla = e}>
+                <div className="advancedSearch2" ref={e => this.blabla = e}>
                     <h3>Advanced Search </h3>
                     <div className="form-group">
                         <input className="form-control" type="text" placeholder="Skriv tekst her" aria-label="Search"/>
@@ -99,24 +94,18 @@ export class AdvancedSearch2 extends Component{
                             <label className="form-check-label" htmlFor="inlineCheckbox1">{tag}</label>
                         </div>
                     ))}
-                    <h4>Dato</h4>
+                    <h4>Date</h4>
+                    <h7>Write in fromat YYYY-MM-DD</h7>
                     <form>
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" className="form-control" placeholder="Fra dato"/>
+                                <input type="text" className="form-control" placeholder="From date"/>
                             </div>
                             <div className="col">
-                                <input type="text" className="form-control" placeholder="Til dato"/>
+                                <input type="text" className="form-control" placeholder="From date"/>
                             </div>
                         </div>
                     </form>
-                    <h2>Tags</h2>
-                    {tags.map(tag => (
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"/>
-                            <label className="form-check-label" htmlFor="inlineCheckbox1">{tag}</label>
-                        </div>
-                    ))}
                     <br/>
                     <button type="button" className="btn btn-primary">Lagre søk</button>
                 </div>

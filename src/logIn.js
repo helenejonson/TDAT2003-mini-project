@@ -35,7 +35,7 @@ export class logIn extends Component{
                             <div className="row">
                                 <label htmlFor="Password" className="col-sm-1 col-form-label col-form-label-lg">Password</label>
                                 <div className="col-sm-8">
-                                    <input id="password" className="form-control form-control-lg" type="text" placeholder="Password" aria-describedby="titleHelp"/>
+                                    <input id="password" className="form-control form-control-lg" type="password" placeholder="Password" aria-describedby="titleHelp"/>
                                     <small id="passwordHelp" className="form-text text-muted">Insert password</small>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@ export class Register extends Component{
                             <div className="row">
                                 <label htmlFor="Password" className="col-sm-1 col-form-label col-form-label-lg">New Password</label>
                                 <div className="col-sm-8">
-                                    <input id="password" className="form-control form-control-lg" type="text" placeholder="Password" aria-describedby="titleHelp"/>
+                                    <input id="password" className="form-control form-control-lg" type="password" placeholder="New Password" aria-describedby="titleHelp"/>
                                     <small id="passwordHelp" className="form-text text-muted">Insert password</small>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@ export class Register extends Component{
                             <div className="row">
                                 <label htmlFor="Password" className="col-sm-1 col-form-label col-form-label-lg">New Password</label>
                                 <div className="col-sm-8">
-                                    <input id="passwordNew" className="form-control form-control-lg" type="text" placeholder="Password" aria-describedby="titleHelp"/>
+                                    <input id="passwordNew" className="form-control form-control-lg" type="password" placeholder="New Password" aria-describedby="titleHelp"/>
                                     <small id="passwordNewHelp" className="form-text text-muted">Insert password again</small>
                                 </div>
                             </div>

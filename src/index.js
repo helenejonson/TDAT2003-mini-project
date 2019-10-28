@@ -10,7 +10,9 @@ import {ArticleEditor } from './ArticleEditor.js';
 import {AdvancedSearch2} from './widgets.js'
 import {logIn} from './logIn';
 import {Register} from './logIn';
-import {Category} from "./Category";
+import {CategoryList} from "./Category";
+import {CategoryArt} from "./Category";
+
 
 const root = document.getElementById('root');
 
@@ -27,20 +29,15 @@ export class Head extends Component {
 }
 
 
-let category = [new Category('Movies', 'Blockbusters and staight to DVD. We cover all'),
-                new Category('Books', 'Read your way to a new favourite'),
-                new Category('New', 'All new and exiting'),
-                new Category('MTG', 'All new card, lore and how-to'),
-                new Category('D&D', 'We play Dungeons and Daragons!!!'),
-                new Category('Anime', 'Kawaii'),
-];
+let category = CategoryList();
+
 
 
 export class Menu extends Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand sticky-top navbar-dark bg-dark">
+                <nav className="navbar navbar-expand navbar-dark bg-dark">
                     <a className="navbar-brand" href="#" ><img src="img/logo-small.png" alt="Home"/> </a>
 
                     <ul className="navbar-nav">
@@ -75,8 +72,8 @@ export class Menu extends Component {
                                 )}
                             </div>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">
+                        <li className="nav-item log">
+                            <a className="nav-link" href="#" >
                                 <NavLink style={{color: 'white'}} activeStyle={{ color: "gray" }} to="/logIn">
                                     logIn
                                 </NavLink>
@@ -122,6 +119,7 @@ if (root)
             <Route exact path="/search" component={AdvancedSearch2} />
             <Route exact path="/logIn" component={logIn} />
             <Route exact path="/Register" component={Register} />
+            <Route exact path="/category/:name" component={CategoryArt} />
             <Foot/>
         </HashRouter>
       </div>, root

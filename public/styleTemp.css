@@ -14,12 +14,10 @@ img {
     grid-template-areas:
             'adv right middle left'
             'adv right middle left'
-            'adv right middle left'
-            'foot foot foot foot';
+            'adv right middle left';
+
     padding: 40px;
 }
-
-
 
 
 .footer {
@@ -44,6 +42,7 @@ body{
     display: inline-block;
     overflow: hidden;
     padding: 0px;
+    height: 100%;
     -webkit-transition: width 0.5s ease-in-out ;
     -moz-transition: width 0.5s ease-in-out;
     -ms-transition: width 0.5s ease-in-out;
@@ -52,7 +51,8 @@ body{
 }
 
 .advancedSearch2 {
-    padding: 10px;
+    padding: 50px;
+    height: 100%;
 }
 nav li a:hover {
     background-color: #111;
@@ -60,7 +60,7 @@ nav li a:hover {
 
 .myList:hover{
     color: white;
-    background-color: #aaa;
+    background-color: white;
 }
 
 .myLink{
@@ -72,6 +72,33 @@ nav li a:hover {
 }
 
 .Register{
+    padding: 20px;
+}
+
+.log{
+text-align: right;
+}
+
+.newComment{
+    text-align: center;
+}
+
+.kommentar{
+    background-color: lightblue;
+    text-align: center;
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin: 1em;
+}
+
+.readArticle{
+    padding: 70px;
+}
+
+.importance{
     padding: 20px;
 }
 
