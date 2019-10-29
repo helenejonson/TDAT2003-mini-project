@@ -21,3 +21,6 @@ export class ArticleCard extends Component<{ art: Article }> {
         );
     }
 }
+
+
+

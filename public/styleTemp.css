@@ -102,4 +102,36 @@ text-align: right;
     padding: 20px;
 }
 
+@keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+.tcontainer{
+    width: 100%;
+    overflow: hidden;
+}
+.ticker-wrap {
+    width: 100%;
+    padding-left: 100%;
+    background-color: lightgray;
+}
+.ticker-move {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 100%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: ticker;
+    animation-duration: 60s;
+}
 
+.ticker-item{
+    display: inline-block;
+    padding: 10px 2rem;
+
+}
+
+.newsBar{
+    color: white;
+    padding: 150px;
+}

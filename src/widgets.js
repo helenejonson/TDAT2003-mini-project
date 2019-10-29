@@ -7,11 +7,7 @@ import {Component} from 'react-simplified';
 import {Menu} from './index';
 import {CategoryList} from "./Category";
 
-
 var categories = CategoryList().map(e => e.name);
-
-var tags = ["Fantasy","Strategy","Co-op", "Single-player", "tags", "new tag", "another tag", "last tag"];
-
 
 export class AdvancedSearch extends Component{
 

@@ -12,6 +12,7 @@ import {logIn} from './logIn';
 import {Register} from './logIn';
 import {CategoryList} from "./Category";
 import {CategoryArt} from "./Category";
+import {Newsfeed} from "./newsfeed";
 
 
 const root = document.getElementById('root');
@@ -39,7 +40,7 @@ export class Menu extends Component {
             <div>
                 <nav className="navbar navbar-expand navbar-dark bg-dark">
                     <a className="navbar-brand" href="#" ><img src="img/logo-small.png" alt="Home"/> </a>
-
+                    <a className="navbar-brand" href="#" >Home </a>
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             <a className="nav-link" href="#">
@@ -81,6 +82,7 @@ export class Menu extends Component {
                         </li>
                     </ul>
                 </nav>
+                <Newsfeed/>
                 <br/>
                 <br/>
             </div>

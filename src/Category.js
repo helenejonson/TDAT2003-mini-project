@@ -3,7 +3,7 @@ import { Component } from 'react-simplified';
 import {Menu} from "./index";
 import {AdvancedSearch} from "./widgets";
 import {ArticleCard} from "./Card";
-import {Article} from "./Article";
+import {getArticles} from "./Article";
 
 export class Category{
     name: string;
@@ -31,13 +31,8 @@ export class CategoryArt extends Component <{ match: { params: { name: string } 
     desc= '';
 
     render(){
-        var tag = ['Maria', 'CoolPerson', 'TellMeWhy'];
         var date = new Date("2017-01-26");
-        var l =[
-            new Article('Name', "img/logo.png", "eeg", "Dont need dis","Do Do" , date, "Maria McC" ),
-            new Article('Name', "img/logo.png", "art", "Dont need dis","Do Do" , date, "Maria McC" ),
-            new Article('Name', "img/logo.png", "square", "Dont need dis","Do Do" , date, "Maria McC" ),
-        ];
+        var l =getArticles();
 
         return(
             <div>

@@ -7,7 +7,7 @@ import "easymde/dist/easymde.min.css";
 import {Article} from "./Article";
 import {Menu}  from './index';
 import {CategoryList} from "./Category";
-import {NavLink} from "react-router-dom";
+
 
 var categories = CategoryList().map(e => e.name);
 
@@ -15,6 +15,7 @@ var categories = CategoryList().map(e => e.name);
 
 export class ArticleEditor extends Component<{ match: { params: { id: number } } }> {
   article: Article = new Article(
+      1,
     'Title',
     'img/logo.png',
     'an eagle',
