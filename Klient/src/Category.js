@@ -17,7 +17,7 @@ export class Category{
 }
 
 export function CategoryList (){
-    let categoryList =[new Category('New', 'All new and exiting'),
+    let categoryList =[
         new Category('Movies', 'Blockbusters and staight to DVD. We cover all'),
         new Category('Books', 'Read your way to a new favourite'),
         new Category('MTG', 'All new card, lore and how-to'),
@@ -28,13 +28,14 @@ export function CategoryList (){
 }
 
 export class CategoryArt extends Component <{ match: { params: { name: string } } }>{
-
+    desc = "";
 
     articles: Article[] = [];
     mounted(): void {
         let art = databaseService.getCategories(this.props.match.params.name).then(data => {
             this.articles = data;
         });
+        this.getDesc();
     }
 
     render(){
@@ -46,8 +47,8 @@ export class CategoryArt extends Component <{ match: { params: { name: string } 
 
         return(
             <div>
-                <Head/>
-                <Menu/>
+                <h1 className="categoryTitle">{this.props.match.params.name}</h1>
+                <h4 className="categoryTitle">{this.desc}</h4>
                 <div className=" grid-container">
                     <AdvancedSearch/>
                     <div className='card-columns'>
@@ -57,5 +58,12 @@ export class CategoryArt extends Component <{ match: { params: { name: string } 
                 </div>
             </div>
         )
+    }
+
+    getDesc(){
+        let findDesc = CategoryList().find(category => category.name === this.props.match.params.name)
+        if(findDesc){
+            this.desc = findDesc.desc;
+        }
     }
 }

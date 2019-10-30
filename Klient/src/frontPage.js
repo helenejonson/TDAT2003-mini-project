@@ -25,8 +25,6 @@ export class Home extends Component {
     }
         return (
             <div>
-                <Head/>
-                <Menu/>
             <div className=" grid-container">
                 <AdvancedSearch/>
                 <div className='card-columns'>

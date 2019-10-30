@@ -77,7 +77,6 @@ export class AdvancedSearch2 extends Component{
     render(){
         return (
             <div>
-                <Menu/>
                 <div className="advancedSearch2" ref={e => this.blabla = e}>
                     <h3>Advanced Search </h3>
                     <div className="form-group">

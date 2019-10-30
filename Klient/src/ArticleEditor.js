@@ -32,7 +32,6 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
   render() {
     return (
       <div className="card">
-        <Menu/>
         <div className="card-body">
       <form>
         {/*====== title ======*/}

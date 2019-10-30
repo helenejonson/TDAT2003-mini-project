@@ -120,7 +120,7 @@ text-align: right;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-name: ticker;
-    animation-duration: 60s;
+    animation-duration: 90s;
 }
 
 .ticker-item{
@@ -132,4 +132,8 @@ text-align: right;
 .newsBar{
     color: white;
     padding: 150px;
+}
+
+.categoryTitle{
+    text-align: center;
 }

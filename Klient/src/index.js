@@ -115,6 +115,8 @@ if (root)
   ReactDOM.render(
       <div>
         <HashRouter>
+            <Route exact path="/" component={Head} />
+            <Menu/>
             <Route exact path="/" component={Home} />
             <Route exact path="/NewArticle" component={ArticleEditor} />
             <Route exact path="/Article/:id" component={Read} />
