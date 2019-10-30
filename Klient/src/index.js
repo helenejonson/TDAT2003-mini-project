@@ -117,7 +117,7 @@ if (root)
         <HashRouter>
             <Route exact path="/" component={Home} />
             <Route exact path="/NewArticle" component={ArticleEditor} />
-            <Route exact path="/Article" component={Read} />
+            <Route exact path="/Article/:id" component={Read} />
             <Route exact path="/search" component={AdvancedSearch2} />
             <Route exact path="/logIn" component={logIn} />
             <Route exact path="/Register" component={Register} />

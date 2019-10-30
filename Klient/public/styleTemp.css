@@ -12,10 +12,8 @@ img {
 .grid-container {
     display: grid;
     grid-template-areas:
-            'adv right middle left'
-            'adv right middle left'
-            'adv right middle left';
-
+            'adv . ';
+    grid-template-columns: 20% 80%;
     padding: 40px;
 }
 

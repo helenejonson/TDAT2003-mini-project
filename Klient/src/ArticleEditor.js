@@ -7,6 +7,7 @@ import "easymde/dist/easymde.min.css";
 import {Article} from "./Article";
 import {Menu}  from './index';
 import {CategoryList} from "./Category";
+import {articleService} from "./Article";
 
 
 var categories = CategoryList().map(e => e.name);
@@ -22,7 +23,9 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
     'lol',
     '',
     new Date(),
-    'somebody'
+    'somebody',
+      'D&D',
+      1
   );
 
   render() {
@@ -36,7 +39,8 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
           <div className="row">
             <label htmlFor="title" className="col-sm-1 col-form-label col-form-label-lg">Title</label>
             <div className="col-sm-8">
-              <input id="title" className="form-control form-control-lg" type="text" placeholder="Your wonderful title" aria-describedby="titleHelp"/>
+              <input id="title" className="form-control form-control-lg" type="text" placeholder="Your wonderful title" aria-describedby="titleHelp"
+                     onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.article.title = event.target.value)}/>
               <small id="titleHelp" className="form-text text-muted">Please pick a catchy title that fits the content of your article</small>
             </div>
           </div>
@@ -62,7 +66,8 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
           <div className="row">
             <label htmlFor="imgAlt" className="col col-form-label">Alt-Text</label>
             <div className="col-11">
-              <input id="imgAlt" className="form-control" type="text" placeholder="Image content description" aria-describedby="imgAltHelp"/>
+              <input id="imgAlt" className="form-control" type="text" placeholder="Image content description" aria-describedby="imgAltHelp"
+                     onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.article.pictureAlt = event.target.value)}/>
               <small id="imgAltHelp" className="form-text text-muted">An alt-text will let people with bad vision get an idea of what it depicts (or if it does not load)</small>
             </div>
           </div>
@@ -81,18 +86,41 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
         {/*====== markdown text ======*/}
         <div className="form-group">
           <SimpleMDE onChange={this.handleMarkdownChange} label="Main text" options={{spellChecker: false}} />
+        </div>'
+        {/*author*/}
+        <div className="row">
+          <label htmlFor="imgCapt" className="col col-form-label">Author</label>
+          <div className="col-11">
+          <input id="author" className="form-control"
+                 type="text" placeholder="Name of author"
+                 onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.article.author = event.target.value)}
+                 aria-describedby="authorHelp"/>
+          <small id="authorHelp" className="form-text text-muted">Hwo are you?</small>
+          </div>
         </div>
-        {/*====== category and tags ======*/}
+        {/*====== category======*/}
         <div className="form-row">
           <div className="col-2">
             <label htmlFor="category">Category</label>
-            <select className="custom-select" id="category">
+            <select className="custom-select" id="category" onChange={(event: SyntheticInputEvent<HTMLInputElement>) => {
+              if(event.target.value) this.article.category = categories[event.target.value -1]
+            }}>
               <option selected>Select category...</option>
-              {categories.map(e =>(
-                        <option value='1'>{e}</option>
+              {categories.map((e,i) =>(
+                        <option value={i+1} >{e}</option>
                   )
               )}
             </select>
+          </div>
+        </div>
+        <div className="row">
+          <label htmlFor="importance" className="col col-form-label">Importance</label>
+          <div className="col-11">
+            <input id="importance" className="form-control"
+                   type="text" placeholder="1 or 2"
+                   onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.article.importance = event.target.value)}
+                   aria-describedby="importanceHelp"/>
+            <small id="imgCaptHelp" className="form-text text-muted">1 = important, 2 = not important</small>
           </div>
         </div>
         <div className='importance'>
@@ -101,7 +129,7 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
             <label className="form-check-label" htmlFor="inlineCheckbox1">Important?</label>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary">Upload</button>
+        <button type="submit" className="btn btn-primary" onClick={this.handleUpload}>Upload</button>
       </form>
         </div>
       </div>
@@ -111,4 +139,12 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
   handleMarkdownChange(value: string) {
     this.article.text = value;
   }
+
+  handleUpload(){
+    console.log(this.article);
+    articleService.addArticle(this.article)
+        .catch(e => console.error(e));
+  }
 }
+
+

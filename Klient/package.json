@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "postinstall": "node ./scripts/enable_babelrc.js",
+    "postinstall": "node scripts/enable_babelrc.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test"
@@ -13,6 +13,7 @@
     "url": "git@gitlab.stud.idi.ntnu.no:randeggu/oving8.git"
   },
   "dependencies": {
+    "react-axios": "^2.0.3",
     "react-markdown-renderer": "^1.4.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.2.0",
@@ -33,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "axios": "^0.19.0"
   }
 }

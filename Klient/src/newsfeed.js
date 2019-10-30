@@ -1,12 +1,23 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import {getArticles} from "./Article";
+import {Article, articleService, getArticles} from "./Article";
 
 
 var l = getArticles();
 
 export class Newsfeed extends Component{
+    articles: Article[] = [];
+    mounted(): void {
+        let art = articleService.getArticles().then(data => {
+            this.articles = data;
+        });
+    }
+
     render(){
+        let articles = this.articles;
+        if(articles.length === 0){
+            return null;
+        }
 
         return(
             <div>
@@ -15,7 +26,7 @@ export class Newsfeed extends Component{
                         <div className="ticker-move">
                             <div className="ticker-item">
                                 <div className="ticker-move">
-                                    {l.map(e =>(
+                                    {articles.map(e =>(
 
                                             <a className="newsBar" href="#/Article">{e.title}</a>
 

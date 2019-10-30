@@ -12,7 +12,7 @@ export class ArticleCard extends Component<{ art: Article }> {
 
                 <div className="card-body" style={{padding:20 + 'px'}}>
                     <h5 className="card-title">
-                        <NavLink style={{color: 'black'}} activeStyle={{ color: 'gray' }} to="/Article">
+                        <NavLink style={{color: 'black'}} activeStyle={{ color: 'gray' }} to={"/Article/" + this.props.art.id}>
                             {this.props.art.title}
                         </NavLink></h5>
                     <div className="card-text">{this.props.art.date.getDay()}/{this.props.art.date.getMonth()}/{this.props.art.date.getFullYear()}</div>

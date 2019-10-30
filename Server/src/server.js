@@ -10,6 +10,12 @@ var pool = mysql.createPool({
     debug: false
 });
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 var bodyParser = require("body-parser");
 app.use(bodyParser.json()); // for å tolke JSON
 
@@ -23,7 +29,7 @@ app.get("/annonse", (req, res) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "Select overskrift, innhold, kategori from annonse",
+                "Select * from annonse",
                 req.body.viktighet,
                 (err, rows) => {
                     connection.release();
@@ -49,7 +55,7 @@ app.get("/viktig", (req, res) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "Select overskrift, innhold, kategori from annonse where viktighet = 1 limit 20",
+                "Select * from annonse where importance = 1 limit 20",
                 req.body.viktighet,
                 (err, rows) => {
                     connection.release();
@@ -75,8 +81,8 @@ app.get("/annonse/:id", (req, res) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "Select overskrift, innhold, kategori from annonse where id=?",
-                req.body.id,
+                "Select * from annonse where id=?",
+                req.params.id,
                 (err, rows) => {
                 connection.release();
             if (err) {
@@ -108,9 +114,9 @@ pool.getConnection((err, connection) => {
         res.json({ error: "feil ved oppkobling" });
     } else {
         console.log("Fikk databasekobling");
-var val = [req.body.overskrift, req.body.innhold, req.body.bilde,req.body.kategori,req.body.viktighet];
+var val = [req.body.title, req.body.picturePath, req.body.pictureAlt,req.body.pictureAlt,req.body.text,req.body.author,req.body.category,req.body.importance];
 connection.query(
-    "insert into annonse ( overskrift, innhold, bilde, kategori, viktighet) values (?,?,?,?,?)",
+    "insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author, category, importance) values (?,?,?,?,?,?,?,?)",
     val,
     err => {
     if (err) {

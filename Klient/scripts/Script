@@ -1,0 +1,39 @@
+create table annonse(
+id integer not null,
+title varchar(100) not null,
+picturePath varchar(250) not null,
+pictureAlt varchar(100) not null,
+pictureCapt varchar(100) not null,
+text varchar(21000) not null,
+date DATETIME,
+author varchar(50) not null,
+category varchar(30) not null,
+importance smallint not null
+);
+;
+
+
+
+auto increment id og sett dato til current time stamp
+
+
+
+Select overskrift, innhold, kategori from annonse where id ?
+
+{"overskrift": "ny tittel", "innhold": "Nytt innhold", "Bilde":"", "kategori": "Sport", "viktighet":"1"
+
+insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author, category, importance) values
+('tittel 1', 'https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497',  'bildebeskrivese','bildetekst',
+'tekst til nr 1', 'Helene Jonson', 'D&D',1);
+
+insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author, category, importance) values
+('tittel 2', 'https://image.cnbcfm.com/api/v1/image/105992231-1561667465295gettyimages-521697453.jpeg?v=1561667497',  'bildebeskrivese','bildetekst',
+'tekst til nr 2', 'Helene Jonson', 'D&D',2);
+
+insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author, category, importance) values
+('tittel 3', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Saturn_eclipse.jpg/350px-Saturn_eclipse.jpg',  'bildebeskrivese','bildetekst',
+'tekst til nr 3', 'Helene Jonson', 'Movies',1);
+
+insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author, category, importance) values
+('tittel 4', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Saturn_eclipse.jpg/350px-Saturn_eclipse.jpg',  'bildebeskrivese','bildetekst',
+'tekst til nr 4', 'Helene Jonson', 'Books',1);
