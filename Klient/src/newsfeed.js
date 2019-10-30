@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import {Article, articleService, getArticles} from "./Article";
+import {Article} from "./Article";
+import {databaseService} from "./DatabaseService";
 
 
-var l = getArticles();
+
 
 export class Newsfeed extends Component{
     articles: Article[] = [];
     mounted(): void {
-        let art = articleService.getArticles().then(data => {
+        let art = databaseService.getArticles().then(data => {
             this.articles = data;
         });
     }
@@ -28,7 +29,7 @@ export class Newsfeed extends Component{
                                 <div className="ticker-move">
                                     {articles.map(e =>(
 
-                                            <a className="newsBar" href="#/Article">{e.title}</a>
+                                            <a className="newsBar" href={"#/Article/" + e.id}>{e.title}</a>
 
                                         )
                                     )}

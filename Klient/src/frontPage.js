@@ -4,14 +4,15 @@ import {ArticleCard, Card, imag} from "./Card";
 import {AdvancedSearch} from "./widgets";
 import {Menu}  from './index';
 import {Head} from "./index";
-import {Article, getArticles} from "./Article";
+import {Article} from "./Article";
 import {articleService} from "./Article";
+import {databaseService} from "./DatabaseService";
 
 
 export class Home extends Component {
     articles: Article[] = [];
     mounted(): void {
-        let art = articleService.getArticles().then(data => {
+        let art = databaseService.getImpArticles().then(data => {
             this.articles = data;
         });
     }

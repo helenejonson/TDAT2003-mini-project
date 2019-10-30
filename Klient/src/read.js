@@ -1,10 +1,11 @@
 // @flow
 
-import {Article, articleService} from "./Article";
+import {Article} from "./Article";
 import * as React from 'react';
 import {Component} from 'react-simplified';
 import MarkdownRenderer from 'react-markdown-renderer';
 import {Menu} from "./index";
+import {databaseService} from "./DatabaseService";
 
 
 let tekst = '**Lorem ipsum dolor sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Quam vulputate dignissim suspendisse in. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Ultricies mi eget mauris pharetra et. In hendrerit gravida rutrum quisque non tellus. Diam maecenas sed enim ut. Suspendisse in est ante in nibh mauris cursus. Laoreet id donec ultrices tincidunt arcu non sodales neque sodales. Amet est placerat in egestas.\n' +
@@ -22,7 +23,7 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
         "Bildet viser en brennende skog", 'Skogen på kalvskinnet allè brenner', tekst, new Date(), 'Kult + Tore');
 
     mounted(): void {
-        articleService.getArticle(this.props.match.params.id).then(article => (this.article = article))
+        databaseService.getArticle(this.props.match.params.id).then(article => (this.article = article))
     }
 
     render(){

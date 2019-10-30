@@ -7,7 +7,8 @@ import "easymde/dist/easymde.min.css";
 import {Article} from "./Article";
 import {Menu}  from './index';
 import {CategoryList} from "./Category";
-import {articleService} from "./Article";
+
+import {databaseService} from "./DatabaseService";
 
 
 var categories = CategoryList().map(e => e.name);
@@ -142,7 +143,7 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
 
   handleUpload(){
     console.log(this.article);
-    articleService.addArticle(this.article)
+    databaseService.addArticle(this.article)
         .catch(e => console.error(e));
   }
 }

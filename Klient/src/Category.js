@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import {Menu} from "./index";
+import {Head, Menu} from "./index";
 import {AdvancedSearch} from "./widgets";
 import {ArticleCard} from "./Card";
-import {getArticles} from "./Article";
+import {Article} from "./Article";
+import {databaseService } from "./DatabaseService";
 
 export class Category{
     name: string;
@@ -27,33 +28,31 @@ export function CategoryList (){
 }
 
 export class CategoryArt extends Component <{ match: { params: { name: string } } }>{
-    name= '';
-    desc= '';
+
+
+    articles: Article[] = [];
+    mounted(): void {
+        let art = databaseService.getCategories(this.props.match.params.name).then(data => {
+            this.articles = data;
+        });
+    }
 
     render(){
-        var date = new Date("2017-01-26");
-        var l =getArticles();
+        let articles = this.articles;
+        if(articles.length === 0){
+            return null;
+        }
+
 
         return(
             <div>
+                <Head/>
                 <Menu/>
-                <h1>{this.name}</h1>
-                <div className="grid-container">
+                <div className=" grid-container">
                     <AdvancedSearch/>
-                    <div className="left">
-                        <ArticleCard art={l[0]}/>
-                        <ArticleCard art={l[1]}/>
-                        <ArticleCard art={l[2]}/>
-                    </div>
-                    <div className="middle">
-                        <ArticleCard art={l[0]}/>
-                        <ArticleCard art={l[1]}/>
-                        <ArticleCard art={l[2]}/>
-                    </div>
-                    <div className="right">
-                        <ArticleCard art={l[0]}/>
-                        <ArticleCard art={l[1]}/>
-                        <ArticleCard art={l[2]}/>
+                    <div className='card-columns'>
+                        {articles.map((a) => <ArticleCard art={a}/>)}
+
                     </div>
                 </div>
             </div>
