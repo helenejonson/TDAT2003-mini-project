@@ -2,7 +2,7 @@ var express = require("express");
 var mysql = require("mysql");
 var app = express();
 var pool = mysql.createPool({
-    connectionLimit: 2,
+    connectionLimit: 4,
     host: "mysql.stud.iie.ntnu.no",
     user: "heleneyj",
     password: "aX3SR1kc",
@@ -45,7 +45,7 @@ app.get("/annonse", (req, res) => {
     });
 });
 
-app.get("/viktig", (req, res) => {
+app.get("/annonse/newsfeed", (req, res) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
         console.log("Connected to database");
@@ -54,8 +54,33 @@ app.get("/viktig", (req, res) => {
             res.json({ error: "feil ved ved oppkobling" });
         } else {
             connection.query(
-                "Select * from annonse where importance = 1 limit 20",
-                req.body.viktighet,
+                "Select * from annonse order by date desc limit 5",
+                (err, rows) => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.json({ error: "error querying" });
+                    } else {
+                        console.log(rows);
+                        res.json(rows);
+                    }
+                }
+            );
+        }
+    });
+});
+
+app.get("/annonse/viktig", (req, res) => {
+    console.log("Fikk request fra klient");
+    pool.getConnection((err, connection) => {
+        console.log("Connected to database");
+        if (err) {
+            console.log("Feil ved kobling til databasen");
+            res.json({ error: "feil ved ved oppkobling" });
+        } else {
+            connection.query(
+                "Select * from annonse where importance = 1 order by date desc limit 20",
+                req.params.importance,
                 (err, rows) => {
                     connection.release();
                     if (err) {
@@ -97,7 +122,7 @@ app.get("/annonse/:id(\\d+)", (req, res) => {
     });
 });
 
-app.get("/annonse/:category", (req, res) => {
+app.get("/annonse/category/:category", (req, res) => {
     console.log("Fikk request fra klient");
     pool.getConnection((err, connection) => {
         console.log("Connected to database");
@@ -123,43 +148,92 @@ app.get("/annonse/:category", (req, res) => {
     });
 });
 
-app.post("/test", (req, res) => {
-    console.log("Fikk POST-request fra klienten");
-console.log("Navn: " + req.body.navn);
-res.status(200);
-res.json({ message: "success" });
+app.get("/annonse/:id(\\d+)/rating", (req, res) => {
+    console.log("Fikk request fra klient");
+    pool.getConnection((err, connection) => {
+        console.log("Connected to database");
+        if (err) {
+            console.log("Feil ved kobling til databasen");
+            res.json({ error: "feil ved ved oppkobling" });
+        } else {
+            connection.query(
+                "Select * from rating where articleId = ?",
+                req.params.id,
+                (err, rows) => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.json({ error: "error querying" });
+                    } else {
+                        console.log(rows);
+                        res.json(rows);
+                    }
+                }
+            );
+        }
+    });
 });
 
 app.post("/annonse", (req, res) => {
     console.log("Fikk POST-request fra klienten");
 
-pool.getConnection((err, connection) => {
-    if (err) {
-        console.log("Feil ved oppkobling");
-        res.json({ error: "feil ved oppkobling" });
-    } else {
-        console.log("Fikk databasekobling");
-var val = [req.body.title, req.body.picturePath, req.body.pictureAlt,req.body.pictureAlt,req.body.text,req.body.author,req.body.category,req.body.importance];
-connection.query(
-    "insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author, category, importance) values (?,?,?,?,?,?,?,?)",
-    val,
-    err => {
-    if (err) {
-        console.log(err);
-        8 / 8
-        res.status(500);
-        res.json({ error: "Feil ved insert" });
-    } else {
-        console.log("insert ok");
-res.send("");
-}
-}
-);
-}
-});
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.log("Feil ved oppkobling");
+            res.json({ error: "feil ved oppkobling" });
+        } else {
+            console.log("Fikk databasekobling");
+            var val = [req.body.title, req.body.picturePath, req.body.pictureAlt,req.body.pictureAlt,req.body.text,req.body.author,req.body.category,req.body.importance];
+            connection.query(
+                "insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author, category, importance) values (?,?,?,?,?,?,?,?)",
+                val,
+                err => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        8 / 8
+                        res.status(500);
+                        res.json({ error: "Feil ved insert" });
+                    } else {
+                        console.log("insert ok");
+                        res.send("");
+                    }
+                }
+            );
+        }
+    });
 });
 
-app.put("/annonse", (req, res) => {
+app.post("/annonse/rating", (req, res) => {
+    console.log("Fikk POST-request fra klienten");
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.log("Feil ved oppkobling");
+            res.json({ error: "feil ved oppkobling" });
+        } else {
+            console.log("Fikk databasekobling");
+            var val = [req.params.articleId, req.params.likes, req.params.dislikes];
+            connection.query(
+                "insert into rating (articleId, likes, dislikes) values (?,?,?)",
+                val,
+                err => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.status(500);
+                        res.json({ error: "Feil ved insert" });
+                    } else {
+                        console.log("insert ok");
+                        res.send("");
+                    }
+                }
+            );
+        }
+    });
+});
+
+app.put("/annonse/rating", (req, res) => {
     console.log("Fikk PUT-request fra klienten");
 
     pool.getConnection((err, connection) => {
@@ -168,18 +242,102 @@ app.put("/annonse", (req, res) => {
             res.json({ error: "feil ved oppkobling" });
         } else {
             console.log("Fikk databasekobling");
-            var val = [req.body.overskrift,req.body.id];
+            var val = [req.params.likes,req.params.dislikes, req.params.articleId];
             connection.query(
-                "UPDATE annonse SET overskrift = ? WHERE id = ?;",
+                "UPDATE rating SET likes = ?, dislikes = ? WHERE articleId = ?;",
                 val,
                 err => {
+                    connection.release();
                     if (err) {
                         console.log(err);
-                        8 / 8
                         res.status(500);
                         res.json({ error: "Feil ved insert" });
                     } else {
                         console.log("Update ok");
+                        res.send("");
+                    }
+                }
+            );
+        }
+    });
+});
+
+app.post("/annonse/:articleId/comment", (req, res) => {
+    console.log("Fikk POST-request fra klienten");
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.log("Feil ved oppkobling");
+            res.json({ error: "feil ved oppkobling" });
+        } else {
+            console.log("Fikk databasekobling");
+            var val = [req.params.articleId, req.body.username, req.body.text];
+            connection.query(
+                "insert into comments (articleId, username, text) values (?,?,?)",
+                val,
+                err => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.status(500);
+                        res.json({ error: "Feil ved insert" });
+                    } else {
+                        console.log("insert ok");
+                        res.send("");
+                    }
+                }
+            );
+        }
+    });
+});
+
+app.get("/annonse/:articleId/comment", (req, res) => {
+    console.log("Fikk request fra klient");
+    pool.getConnection((err, connection) => {
+        console.log("Connected to database");
+        if (err) {
+            console.log("Feil ved kobling til databasen");
+            res.json({ error: "feil ved ved oppkobling" });
+        } else {
+            connection.query(
+                "Select * from comments where articleId = ? order by date DESC",
+                req.params.articleId,
+                (err, rows) => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.json({error: "error querying"});
+                    } else {
+                        console.log(rows);
+                        res.json(rows);
+                    }
+                }
+            );
+        }
+    });
+});
+
+app.delete("/annonse/:id", (req, res) => {
+    console.log("Fikk DELETE-request fra klienten");
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.log("Feil ved oppkobling");
+            res.json({ error: "feil ved oppkobling" });
+        } else {
+            console.log("Fikk databasekobling");
+            var val = [req.params.id];
+            connection.query(
+                "delete from annonse where id = ?;",
+                val,
+                err => {
+                    connection.release();
+                    if (err) {
+                        console.log(err);
+                        res.status(500);
+                        res.json({ error: "Feil ved insert" });
+                    } else {
+                        console.log("Delete ok");
                         res.send("");
                     }
                 }

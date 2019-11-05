@@ -43,18 +43,14 @@ export class Menu extends Component {
                     <a className="navbar-brand" href="#" >Home </a>
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                <NavLink style={{color: 'white'}} activeStyle={{ color: 'gray' }} to="/NewArticle">
+                                <NavLink className="nav-link" style={{color: 'white'}} activeStyle={{ color: 'gray' }} to="/NewArticle">
                                     New Article
                                 </NavLink>
-                            </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                <NavLink style={{color: 'white'}} activeStyle={{ color: "gray" }} to="/search">
+                                <NavLink className="nav-link" style={{color: 'white'}} activeStyle={{ color: "gray" }} to="/search">
                                    Advanced search
                                 </NavLink>
-                            </a>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" style={{color: 'white'}}  role="button"
@@ -74,16 +70,13 @@ export class Menu extends Component {
                             </div>
                         </li>
                         <li className="nav-item log">
-                            <a className="nav-link" href="#" >
-                                <NavLink style={{color: 'white'}} activeStyle={{ color: "gray" }} to="/logIn">
+                                <NavLink className="nav-link" style={{color: 'white'}} activeStyle={{ color: "gray" }} to="/logIn">
                                     logIn
                                 </NavLink>
-                            </a>
                         </li>
                     </ul>
                 </nav>
                 <Newsfeed/>
-                <br/>
                 <br/>
             </div>
         );

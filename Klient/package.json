@@ -13,6 +13,7 @@
     "url": "git@gitlab.stud.idi.ntnu.no:randeggu/oving8.git"
   },
   "dependencies": {
+    "history": "^4.10.1",
     "react-axios": "^2.0.3",
     "react-markdown-renderer": "^1.4.0",
     "react-router-dom": "^5.1.2",

@@ -7,8 +7,13 @@ import "easymde/dist/easymde.min.css";
 import {Article} from "./Article";
 import {Menu}  from './index';
 import {CategoryList} from "./Category";
-
 import {databaseService} from "./DatabaseService";
+import {createHashHistory} from 'history';
+import {Rating} from "./Rating";
+
+const history = createHashHistory();
+
+
 
 
 var categories = CategoryList().map(e => e.name);
@@ -58,6 +63,16 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
                 <label className="custom-file-label" htmlFor="imgFile">Choose a suitable image</label>
             </div>
           </div>
+            <div className="row">
+                <label htmlFor="imgPath" className="col col-form-label">Image path from web</label>
+                <div className="col-11">
+                    <input id="imgPath" className="form-control"
+                           type="text" placeholder="Image path"
+                           onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.article.picturePath = event.target.value)}
+                           aria-describedby="imgPathHelp"/>
+                    <small id="imgCaptHelp" className="form-text text-muted">Please provide a caption for your image, containing further details</small>
+                </div>
+            </div>
           {/*====== image preview ======*/}
           <div className="card align-items-center p-3 text-center">
             <img src={this.article.picturePath} className="card-img w-25" alt="[ Preview ]"/>
@@ -86,7 +101,7 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
         {/*====== markdown text ======*/}
         <div className="form-group">
           <SimpleMDE onChange={this.handleMarkdownChange} label="Main text" options={{spellChecker: false}} />
-        </div>'
+        </div>
         {/*author*/}
         <div className="row">
           <label htmlFor="imgCapt" className="col col-form-label">Author</label>
@@ -126,7 +141,7 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
         <div className='importance'>
           <div className="form-check form-check-inline">
             <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"/>
-            <label className="form-check-label" htmlFor="inlineCheckbox1">Important?</label>
+            <label className="form-check-label" htmlFor="inlineCheckbox1 ">Important?</label>
           </div>
         </div>
         <button type="submit" className="btn btn-primary" onClick={this.handleUpload}>Upload</button>
@@ -141,7 +156,7 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
   }
 
   handleUpload(){
-    console.log(this.article);
+    console.log(this.rating);
     databaseService.addArticle(this.article)
         .catch(e => console.error(e));
   }

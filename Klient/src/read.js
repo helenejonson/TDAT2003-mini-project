@@ -4,8 +4,10 @@ import {Article} from "./Article";
 import * as React from 'react';
 import {Component} from 'react-simplified';
 import MarkdownRenderer from 'react-markdown-renderer';
-import {Menu} from "./index";
 import {databaseService} from "./DatabaseService";
+import {Comments} from "./Comments";
+import {Delete} from "./delete";
+import {Ratings} from "./Rating";
 
 export class Read extends Component<{ match: { params: { id: number } } }> {
 
@@ -20,33 +22,25 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
         if(article) {
             return (
                 <div>
-                    <Menu/>
                     <div class='readArticle'>
-                        <h1> {article.title} </h1>
+                        <h1 className='articleTitle'> {article.title} </h1>
                         <figure>
-                            <img src={article.picturePath} alt={article.pictureAlt}/>
-                            <figcaption>{article.pictureCapt}</figcaption>
+                            <img className='pictureSize' src={article.picturePath} alt={article.pictureAlt}/>
+                            <figcaption className='pictureCapt'>{article.pictureCapt}</figcaption>
                         </figure>
+                        <br/>
                         {/* for å gi oss formatert versjon av teksten */}
                         <MarkdownRenderer markdown={article.text}/>
-                        <p> {article.tags} </p>
-                        <p> {article.date.toDateString()}</p>
-                        <p> {article.author}</p>
-                        <div className="kommentarer">
-                            <h3>Comments</h3>
-                            <div className='comment'>
-                                <button className='newComment'>Ny kommentar</button>
-                                <div className="kommentar">
-                                    <h4>Ola Nordman</h4>
-                                    <p>Duis varius hendrerit sem, nec ornare mauris interdum at.</p>
-                                </div>
-                                <div className="kommentar">
-                                    <h4>Kari Nordman</h4>
-                                    <p>Quisque dignissim tortor nunc, sit amet consectetur mi iaculis eu.</p>
-                                </div>
-                                <button>Flere kommentarer</button>
-                            </div>
+                        <br/>
+                        <div className= 'articleInfo'>
+                            <small> Author: {article.author}</small>
+                            <small> Published: {article.date.toLocaleString()}</small>
                         </div>
+                        <br/>
+                        <Ratings id={this.props.match.params.id}/>
+                        <Comments id={this.props.match.params.id}/>
+
+                        <Delete id={this.props.match.params.id}/>
                     </div>
                 </div>
             );

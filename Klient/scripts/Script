@@ -12,7 +12,18 @@ importance smallint not null
 );
 ;
 
+create table comments(
+commentId integer not null,
+articleId integer not null,
+username varchar (50) not null,
+text varchar(1000) not null,
+date DATETIME);
 
+create table rating(
+ratingId integer not null,
+articleId integer not null,
+like integer,
+dislike integer)
 
 auto increment id og sett dato til current time stamp
 
@@ -37,3 +48,8 @@ insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author,
 insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author, category, importance) values
 ('tittel 4', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Saturn_eclipse.jpg/350px-Saturn_eclipse.jpg',  'bildebeskrivese','bildetekst',
 'tekst til nr 4', 'Helene Jonson', 'Books',1);
+
+
+insert into rating(articleId, likes, dislikes) values (1,4,2);
+insert into rating(articleId, likes, dislikes) values (5,15,9);
+insert into rating(articleId, likes, dislikes) values (14,10,2);

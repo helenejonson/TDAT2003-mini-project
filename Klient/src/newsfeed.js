@@ -9,7 +9,7 @@ import {databaseService} from "./DatabaseService";
 export class Newsfeed extends Component{
     articles: Article[] = [];
     mounted(): void {
-        let art = databaseService.getArticles().then(data => {
+        let art = databaseService.getNewsfeed().then(data => {
             this.articles = data;
         });
     }
@@ -28,9 +28,7 @@ export class Newsfeed extends Component{
                             <div className="ticker-item">
                                 <div className="ticker-move">
                                     {articles.map(e =>(
-
-                                            <a className="newsBar" href={"#/Article/" + e.id}>{e.title}</a>
-
+                                            <a className="newsBar" href={"#/Article/" + e.id}>{e.title} / {e.date.toLocaleTimeString()}</a>
                                         )
                                     )}
                                 </div>
@@ -43,25 +41,3 @@ export class Newsfeed extends Component{
         )
     }
 }
-
-/*
-<div>
-                <nav className="navbar navbar-expand navbar-light bg-light">
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                {l.map(e =>(
-                                        <div>
-                                            <NavLink class="myList" style={{color: 'black'}} activeStyle={{ color: "gray" }} to={"/Article"}>
-                                                {e.title} {e.date}
-                                            </NavLink>
-                                            <br/>
-                                        </div>
-                                    )
-                                )}
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
- */

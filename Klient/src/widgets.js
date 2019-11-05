@@ -4,7 +4,6 @@
 import ReactDOM from 'react-dom';
 import * as React from 'react';
 import {Component} from 'react-simplified';
-import {Menu} from './index';
 import {CategoryList} from "./Category";
 
 var categories = CategoryList().map(e => e.name);

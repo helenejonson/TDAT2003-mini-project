@@ -16,7 +16,6 @@ export class logIn extends Component{
     render(){
         return(
             <div>
-                <Menu/>
                 <div className='login'>
                     <a href="http://localhost:3000/?#/Register" className="button">Register?</a>
                     <form>
@@ -52,7 +51,6 @@ export class Register extends Component{
     render(){
         return(
             <div>
-                <Menu/>
                 <div className='Register'>
                     <a href="http://localhost:3000/?#/LogIn" className="button">LogIn?</a>
 
