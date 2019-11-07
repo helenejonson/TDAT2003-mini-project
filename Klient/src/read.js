@@ -7,7 +7,7 @@ import MarkdownRenderer from 'react-markdown-renderer';
 import {databaseService} from "./DatabaseService";
 import {Comments} from "./Comments";
 import {Delete} from "./delete";
-import {Ratings} from "./Rating";
+
 
 export class Read extends Component<{ match: { params: { id: number } } }> {
 
@@ -37,7 +37,13 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
                             <small> Published: {article.date.toLocaleString()}</small>
                         </div>
                         <br/>
-                        <Ratings id={this.props.match.params.id}/>
+                        <div className='rating'>
+                            <p>Rating</p>
+                            <button type="button" className="btn btn-success like" onClick={this.pushLike}>Like</button>
+                            <button type="button" className="btn btn-danger dislike" onClick={this.pushDislike}>Dislike</button>
+                            <p>Likes: {article.likes}     Dislikes: {article.dislikes}</p>
+
+                        </div>
                         <Comments id={this.props.match.params.id}/>
 
                         <Delete id={this.props.match.params.id}/>
@@ -54,5 +60,17 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
             )
 
         }
+    }
+
+    pushLike(){
+        this.article.likes = this.article.likes +1;
+        databaseService.updateRating(this.article)
+            .catch(e => console.error(e));
+    }
+
+    pushDislike(){
+        this.article.dislikes = this.article.dislikes + 1;
+        databaseService.updateRating(this.article)
+            .catch(e => console.error(e));
     }
 }

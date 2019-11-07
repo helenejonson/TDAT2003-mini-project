@@ -1,31 +1,52 @@
 import * as React from 'react';
-import { Component } from 'react-simplified';
-import {Head, Menu} from "./index";
+import { Component, sharedComponentData } from 'react-simplified';
 import {AdvancedSearch} from "./widgets";
 import {ArticleCard} from "./Card";
 import {Article} from "./Article";
 import {databaseService } from "./DatabaseService";
 
 export class Category{
+    categoryId: number;
     name: string;
     desc: string;
 
-    constructor(name: string, desc: string){
+    constructor(categoryId: number, name: string, desc: string){
+        this.categoryId = categoryId;
         this.name = name;
         this.desc = desc;
     }
 }
+/*
+new Category(1,'Movies', 'Blockbusters and staight to DVD. We cover all'),
+    new Category(2,'Books', 'Read your way to a new favourite'),
+    new Category(3,'MTG', 'All new card, lore and how-to'),
+    new Category(4,'D&D', 'We play dugeons and dragons!!!'),
+    new Category(5,'Anime', 'Kawaii'),
+ */
+export let categoryList = sharedComponentData({
+    categories: [
+    new Category(1,'Movies', 'Blockbusters and staight to DVD. We cover all'),
+    new Category(2,'Books', 'Read your way to a new favourite'),
+    new Category(3,'MTG', 'All new card, lore and how-to'),
+]
+});
+console.log(categoryList);
 
-export function CategoryList (){
-    let categoryList =[
-        new Category('Movies', 'Blockbusters and staight to DVD. We cover all'),
-        new Category('Books', 'Read your way to a new favourite'),
-        new Category('MTG', 'All new card, lore and how-to'),
-        new Category('D&D', 'We play Dungeons and Daragons!!!'),
-        new Category('Anime', 'Kawaii'),
-    ];
-    return categoryList;
+export function f() {
+    return databaseService.getCategoryList()
+        .then(actualCategories => {
+            const before = categoryList.categories.length;
+            console.log(actualCategories);
+            categoryList.categories.push(...actualCategories);
+            categoryList.categories.splice(0, before);
+        })
+        .catch(err => {
+            console.log("FEIL DEBUG: ", err);
+        });
 }
+
+
+
 
 export class CategoryArt extends Component <{ match: { params: { name: string } } }>{
     desc = "";
@@ -61,7 +82,7 @@ export class CategoryArt extends Component <{ match: { params: { name: string } 
     }
 
     getDesc(){
-        let findDesc = CategoryList().find(category => category.name === this.props.match.params.name)
+        let findDesc = categoryList.categories.find(category => category.name === this.props.match.params.name)
         if(findDesc){
             this.desc = findDesc.desc;
         }

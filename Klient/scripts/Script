@@ -8,7 +8,9 @@ text varchar(21000) not null,
 date DATETIME,
 author varchar(50) not null,
 category varchar(30) not null,
-importance smallint not null
+importance smallint not null,
+likes integer,
+dislikes integer
 );
 ;
 
@@ -19,11 +21,25 @@ username varchar (50) not null,
 text varchar(1000) not null,
 date DATETIME);
 
-create table rating(
-ratingId integer not null,
-articleId integer not null,
-like integer,
-dislike integer)
+create table category(
+categoryId integer not null,
+name varchar(30) not null,
+description varchar (50) not null
+);
+
+new Category('Movies', 'Blockbusters and staight to DVD. We cover all'),
+        new Category('Books', 'Read your way to a new favourite'),
+        new Category('MTG', 'All new card, lore and how-to'),
+        new Category('D&D', 'We play Dungeons and Daragons!!!'),
+        new Category('Anime', 'Kawaii'),
+
+
+insert into category(name, description) values ('Movies', 'Blockbusters and staight to DVD. We cover all');
+insert into category(name, description) values ('Books', 'Read your way to a new favourite');
+insert into category(name, description) values ('MTG', 'All new card, lore and how-to');
+insert into category(name, description) values ('D&D', 'We play Dungeons and Daragons!!!');
+insert into category(name, description) values ('Anime', 'Kawaii');
+
 
 auto increment id og sett dato til current time stamp
 

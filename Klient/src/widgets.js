@@ -4,9 +4,9 @@
 import ReactDOM from 'react-dom';
 import * as React from 'react';
 import {Component} from 'react-simplified';
-import {CategoryList} from "./Category";
+import {categoryList} from "./Category";
 
-var categories = CategoryList().map(e => e.name);
+var categories = categoryList.categories.map(e => e.name);
 
 export class AdvancedSearch extends Component{
 

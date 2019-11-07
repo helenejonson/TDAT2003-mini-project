@@ -4,18 +4,20 @@ import * as React from 'react';
 import axios from 'axios';
 import {Article} from "./Article";
 import {Comment} from "./Comments";
-import {Rating} from "./Rating";
+import {Category} from "./Category";
 
 class DatabaseService {
     getImpArticles() {
-        return axios.get<Article[]>('http://localhost:8080/annonse/viktig')
-            .then(response => {
+        return new Promise((resolve, reject) => {
+            axios.get<Article[]>('http://localhost:8080/annonse/viktig')
+                .then(response => {
 
-                return response.data.map(a =>
-                    new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance))
+                    resolve(response.data.map(a =>
+                        new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes)));
 
-            })
-            .catch(error => console.log(error));
+                })
+                .catch(error => reject(error));
+        });
     }
 
     getNewsfeed() {
@@ -23,7 +25,7 @@ class DatabaseService {
             .then(response => {
 
                 return response.data.map(a =>
-                    new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance))
+                    new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes))
 
             })
             .catch(error => console.log(error));
@@ -34,7 +36,7 @@ class DatabaseService {
             .then(response => {
 
                 return response.data.map(a =>
-                    new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance))
+                    new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes))
 
             })
             .catch(error => console.log(error));
@@ -45,7 +47,7 @@ class DatabaseService {
             .then(response => {
 
                 return response.data.map(a =>
-                    new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance))
+                    new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes))
 
             })
             .catch(error => console.log(error));
@@ -55,7 +57,7 @@ class DatabaseService {
         return axios.get<Article>('http://localhost:8080/annonse/' + id).then(response => {
             let a = response.data[0];
             console.log(a);
-            return new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance)
+            return new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes)
         })
             .catch(error => console.error(error));
     }
@@ -86,21 +88,19 @@ class DatabaseService {
         return axios.delete<Article, void>('http://localhost:8080/annonse/' + id);
     }
 
-    getRating(id: number) {
-        return axios.get<Rating>('http://localhost:8080/annonse/' + id + '/rating').then(response => {
-            let r = response.data[0];
-            return new Rating(r.ratingId, r.articleId, r.likes,r.dislikes)
-        })
-            .catch(error => console.log(error));
-    }
 
-    addRating(rating: Rating) {
-        return axios.post<Article, void>('http://localhost:8080/annonse/rating', rating).then(response => response.data);
-    }
-
-    updateRating(rating: Rating) {
+    updateRating(article: Article) {
         console.log('se her helene');
-        return axios.put('http://localhost:8080/annonse/rating', rating);
+        return axios.put('http://localhost:8080/annonse/rating', article);
+    }
+
+    getCategoryList(){
+        return axios.get<Category[]>('http://localhost:8080/annonse/categoryList')
+            .then(response => {
+                return response.data.map(c =>
+                    new Category(c.categoryId, c.name, c.description))
+            })
+            .catch(error => console.log(error));
     }
 }
 export let databaseService = new DatabaseService();

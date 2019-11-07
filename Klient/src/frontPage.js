@@ -2,18 +2,17 @@ import * as React from 'react';
 import {Component} from "react-simplified";
 import {ArticleCard, Card, imag} from "./Card";
 import {AdvancedSearch} from "./widgets";
-import {Menu}  from './index';
-import {Head} from "./index";
 import {Article} from "./Article";
-import {articleService} from "./Article";
 import {databaseService} from "./DatabaseService";
 
 
 export class Home extends Component {
     articles: Article[] = [];
     mounted(): void {
-        let art = databaseService.getImpArticles().then(data => {
+        databaseService.getImpArticles().then(data => {
             this.articles = data;
+        }).catch(err => {
+            console.log("FEIL DEBUG: ", err);
         });
     }
 

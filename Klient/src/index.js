@@ -10,7 +10,7 @@ import {ArticleEditor } from './ArticleEditor.js';
 import {AdvancedSearch2} from './widgets.js'
 import {logIn} from './logIn';
 import {Register} from './logIn';
-import {CategoryList} from "./Category";
+import {categoryList, f} from "./Category";
 import {CategoryArt} from "./Category";
 import {Newsfeed} from "./newsfeed";
 
@@ -29,8 +29,7 @@ export class Head extends Component {
     }
 }
 
-
-let category = CategoryList();
+f();
 
 
 
@@ -58,7 +57,7 @@ export class Menu extends Component {
                                 Category
                             </a>
                             <div className="dropdown-menu " aria-labelledby="navbarDropdown">
-                                {category.map(e =>(
+                                {categoryList.categories.map(e =>(
                                     <div>
                                     <NavLink class="myList" style={{color: 'black'}} activeStyle={{ color: "gray" }} to={"/category/" + e.name}>
                                         {e.name}

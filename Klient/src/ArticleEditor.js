@@ -6,17 +6,17 @@ import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import {Article} from "./Article";
 import {Menu}  from './index';
-import {CategoryList} from "./Category";
+import {Category, categoryList} from "./Category";
 import {databaseService} from "./DatabaseService";
 import {createHashHistory} from 'history';
-import {Rating} from "./Rating";
+
 
 const history = createHashHistory();
 
 
 
 
-var categories = CategoryList().map(e => e.name);
+var categories: Category[] = categoryList.categories;
 
 
 
@@ -31,7 +31,9 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
     new Date(),
     'somebody',
       'D&D',
-      1
+      1,
+      0,
+      0
   );
 
   render() {
@@ -118,11 +120,11 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
           <div className="col-2">
             <label htmlFor="category">Category</label>
             <select className="custom-select" id="category" onChange={(event: SyntheticInputEvent<HTMLInputElement>) => {
-              if(event.target.value) this.article.category = categories[event.target.value -1]
+              if(event.target.value) this.article.category = categories[event.target.value -1].name
             }}>
               <option selected>Select category...</option>
               {categories.map((e,i) =>(
-                        <option value={i+1} >{e}</option>
+                        <option value={i+1} >{e.name}</option>
                   )
               )}
             </select>
