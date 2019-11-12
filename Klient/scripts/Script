@@ -27,21 +27,12 @@ name varchar(30) not null,
 description varchar (50) not null
 );
 
-new Category('Movies', 'Blockbusters and staight to DVD. We cover all'),
-        new Category('Books', 'Read your way to a new favourite'),
-        new Category('MTG', 'All new card, lore and how-to'),
-        new Category('D&D', 'We play Dungeons and Daragons!!!'),
-        new Category('Anime', 'Kawaii'),
-
 
 insert into category(name, description) values ('Movies', 'Blockbusters and staight to DVD. We cover all');
 insert into category(name, description) values ('Books', 'Read your way to a new favourite');
 insert into category(name, description) values ('MTG', 'All new card, lore and how-to');
 insert into category(name, description) values ('D&D', 'We play Dungeons and Daragons!!!');
 insert into category(name, description) values ('Anime', 'Kawaii');
-
-
-auto increment id og sett dato til current time stamp
 
 
 
@@ -66,6 +57,3 @@ insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author,
 'tekst til nr 4', 'Helene Jonson', 'Books',1);
 
 
-insert into rating(articleId, likes, dislikes) values (1,4,2);
-insert into rating(articleId, likes, dislikes) values (5,15,9);
-insert into rating(articleId, likes, dislikes) values (14,10,2);

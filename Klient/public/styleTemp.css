@@ -44,13 +44,14 @@ body{
     padding: 50px;
     height: 100%;
 }
-nav li a:hover {
-    background-color: #111;
-}
 
 .myList:hover{
     color: white;
     background-color: white;
+}
+
+nav li a:hover {
+    background-color: #111;
 }
 
 .myLink{
@@ -71,9 +72,7 @@ text-align: right;
 
 /*CSS for the article*/
 .readArticle{
-    padding: 50px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding: 50px 100px 50px 100px;
 }
 
 .articleTitle{
@@ -81,9 +80,7 @@ text-align: right;
 }
 
 .pictureSize{
-    padding-top: 20px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding: 20px 100px 5px 100px;
 }
 
 .pictureCapt{
@@ -108,10 +105,7 @@ text-align: right;
     background-color: lightblue;
     text-align: center;
     border-radius: 25px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    padding: 20px 1px 20px 1px;
     margin: 1em;
 }
 
@@ -167,6 +161,24 @@ text-align: right;
 
 {/*Category page*/}
 .categoryTitle{
+     text-align: center;
+ }
+
+.title{
     text-align: center;
+}
+
+{/*Preview page*/}
+.preview-btn{
+    color: white;
+    background-color: #1e7e34;
+}
+.preview {
+    padding: 50px 500px 50px 500px;
+}
+
+.mini-article{
+    padding: 5px;
+    border-style: solid;
 }
 

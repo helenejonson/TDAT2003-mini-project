@@ -62,7 +62,13 @@ export class CategoryArt extends Component <{ match: { params: { name: string } 
     render(){
         let articles = this.articles;
         if(articles.length === 0){
-            return null;
+            return (
+                <div>
+                    <h1 className='title'>
+                        Empty? Be the first to post :)
+                    </h1>
+                </div>
+            );
         }
 
 

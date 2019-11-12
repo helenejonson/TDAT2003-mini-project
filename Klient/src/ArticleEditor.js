@@ -5,10 +5,10 @@ import {Component} from 'react-simplified';
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import {Article} from "./Article";
-import {Menu}  from './index';
 import {Category, categoryList} from "./Category";
 import {databaseService} from "./DatabaseService";
 import {createHashHistory} from 'history';
+import MarkdownRenderer from "react-markdown-renderer";
 
 
 const history = createHashHistory();
@@ -22,7 +22,7 @@ var categories: Category[] = categoryList.categories;
 
 export class ArticleEditor extends Component<{ match: { params: { id: number } } }> {
   article: Article = new Article(
-      1,
+      0,
     'Title',
     'img/logo.png',
     'an eagle',
@@ -31,7 +31,7 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
     new Date(),
     'somebody',
       'D&D',
-      1,
+      2,
       0,
       0
   );
@@ -130,20 +130,42 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
             </select>
           </div>
         </div>
-        <div className="row">
-          <label htmlFor="importance" className="col col-form-label">Importance</label>
-          <div className="col-11">
-            <input id="importance" className="form-control"
-                   type="text" placeholder="1 or 2"
-                   onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.article.importance = event.target.value)}
-                   aria-describedby="importanceHelp"/>
-            <small id="imgCaptHelp" className="form-text text-muted">1 = important, 2 = not important</small>
-          </div>
-        </div>
         <div className='importance'>
           <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"/>
-            <label className="form-check-label" htmlFor="inlineCheckbox1 ">Important?</label>
+            <input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" onClick={this.setImportance}/>
+            <label className="form-check-label" htmlFor="inlineCheckbox1">Important?</label>
+          </div>
+        </div>
+        <br/>
+        {/*The dropdown preview display*/}
+        <div>
+          <p>
+            <button className="btn preview-btn" type="button" data-toggle="collapse"
+                    data-target="#collapsePreview" aria-expanded="false" aria-controls="collapsePreview">
+              Preview
+            </button>
+          </p>
+          <div className="collapse" id="collapsePreview">
+            <div className='preview'>
+              <div className='mini-article'>
+                <h1 className='articleTitle'> {this.article.title} </h1>
+                <figure>
+                  <img className='pictureSize' src={this.article.picturePath} alt={this.article.pictureAlt}/>
+                  <figcaption className='pictureCapt'>{this.article.pictureCapt}</figcaption>
+                </figure>
+                <br/>
+                <MarkdownRenderer markdown={this.article.text}/>
+                <br/>
+                <div className='articleInfo'>
+                  <small> Author: {this.article.author}</small>
+                  <br/>
+                  <small> Category: {this.article.category}</small>
+                  <br/>
+                  <small> Published: {this.article.date.toLocaleString()}</small>
+                </div>
+                <br/>
+              </div>
+            </div>
           </div>
         </div>
         <button type="submit" className="btn btn-primary" onClick={this.handleUpload}>Upload</button>
@@ -153,12 +175,25 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
     );
   }
 
+
+
+  setImportance(){
+    var x = document.getElementById('inlineCheckbox1').checked;
+      if(x){
+        this.article.importance = 1;
+        console.log(this.article.importance);
+      }else{
+        this.article.importance = 2;
+        console.log(this.article.importance);
+    }
+  }
+
   handleMarkdownChange(value: string) {
     this.article.text = value;
   }
 
   handleUpload(){
-    console.log(this.rating);
+      console.log(this.article);
     databaseService.addArticle(this.article)
         .catch(e => console.error(e));
   }

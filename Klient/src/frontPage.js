@@ -20,7 +20,13 @@ export class Home extends Component {
 
     let articles = this.articles;
     if(articles.length === 0){
-        return null;
+        return(
+            <div>
+                <h1 className="title">
+                    Empty? Be the first to post something new
+                </h1>
+            </div>
+        );
     }
         return (
             <div>
@@ -28,7 +34,6 @@ export class Home extends Component {
                 <AdvancedSearch/>
                 <div className='card-columns'>
                     {articles.map((a) => <ArticleCard art={a}/>)}
-
                 </div>
             </div>
             </div>

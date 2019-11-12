@@ -13,6 +13,7 @@ import {Register} from './logIn';
 import {categoryList, f} from "./Category";
 import {CategoryArt} from "./Category";
 import {Newsfeed} from "./newsfeed";
+import {New} from "./new";
 
 
 const root = document.getElementById('root');
@@ -41,6 +42,11 @@ export class Menu extends Component {
                     <a className="navbar-brand" href="#" ><img src="img/logo-small.png" alt="Home"/> </a>
                     <a className="navbar-brand" href="#" >Home </a>
                     <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <NavLink className="nav-link" style={{color: 'white'}} activeStyle={{ color: "gray" }} to="/New">
+                                New
+                            </NavLink>
+                        </li>
                         <li className="nav-item">
                                 <NavLink className="nav-link" style={{color: 'white'}} activeStyle={{ color: 'gray' }} to="/NewArticle">
                                     New Article
@@ -116,6 +122,7 @@ if (root)
             <Route exact path="/logIn" component={logIn} />
             <Route exact path="/Register" component={Register} />
             <Route exact path="/category/:name" component={CategoryArt} />
+            <Route exact path="/New" component={New}/>
             <Foot/>
         </HashRouter>
       </div>, root

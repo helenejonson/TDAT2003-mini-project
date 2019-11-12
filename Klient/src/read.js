@@ -34,6 +34,9 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
                         <br/>
                         <div className= 'articleInfo'>
                             <small> Author: {article.author}</small>
+                            <br/>
+                            <small> Category: {article.category}</small>
+                            <br/>
                             <small> Published: {article.date.toLocaleString()}</small>
                         </div>
                         <br/>

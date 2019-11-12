@@ -4,11 +4,11 @@ const Dao = require('./Dao');
 module.exports = class ArticleDao extends Dao {
 
     getArticles(callback) {
-        super.query("Select * from annonse", [], callback);
+        super.query("Select * from annonse order by date desc", [], callback);
     }
 
     getImportant(callback) {
-        super.query("Select * from annonse where importance = 1 order by date desc limit 20", [], callback);
+        super.query("SELECT * FROM annonse WHERE importance = 1 order by likes DESC, dislikes ASC, date desc limit 20", [], callback);
     }
 
     getNewsfeed(callback) {

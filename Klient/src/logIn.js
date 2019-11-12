@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import {Menu} from './index';
 
 class User{
     username: string;
