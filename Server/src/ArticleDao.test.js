@@ -9,14 +9,15 @@ var pool = mysql.createPool({
     user: "heleneyj",
     password: "aX3SR1kc",
     database: "heleneyj",
-    debug: false
+    debug: false,
+    multipleStatements: true
 });
 
-let ArticleDao = new ArticleDao(pool);
+let articleDao = new ArticleDao(pool);
 
 beforeAll(done => {
-    runsqlfile("dao/create_tables.sql", pool, () => {
-        runsqlfile("dao/create_testdata.sql", pool, done);
+    runsqlfile("src/create_tables.sql", pool, () => {
+        runsqlfile("src/create_testdata.sql", pool, done);
     })
 });
 
@@ -33,7 +34,7 @@ test("get all articles from db", done => {
         done();
     }
 
-    ArticleDao.getArticles(callback);
+    articleDao.getArticles(callback);
 });
 
 test("get all important articles from db", done => {
@@ -45,7 +46,7 @@ test("get all important articles from db", done => {
         done();
     }
 
-    ArticleDao.getImportant(callback);
+    articleDao.getImportant(callback);
 });
 
 test("get full newsfeed from db", done => {
@@ -57,7 +58,7 @@ test("get full newsfeed from db", done => {
         done();
     }
 
-    ArticleDao.getNewsfeed(callback);
+    articleDao.getNewsfeed(callback);
 });
 
 test("get all articles in category from db", done => {
@@ -69,7 +70,7 @@ test("get all articles in category from db", done => {
         done();
     }
 
-    ArticleDao.getCategory('D&D', callback);
+    articleDao.getCategory('D&D', callback);
 });
 
 test("get one article from db", done => {
@@ -78,24 +79,52 @@ test("get one article from db", done => {
             "Test callback status=" + status + ", data=" + JSON.stringify(data)
         );
         expect(data.length).toBe(1);
-        expext(data[0].title).toBe("tittel 1");
+        expect(data[0].title).toBe("tittel 1");
         done();
     }
 
-    ArticleDao.getArticle(1, callback);
+    articleDao.getArticle(1, callback);
 });
 
+/*
 test("delete article", done => {
     function callback(status, data) {
         console.log("Test callback: status=" + status + ", data.length=" + data.length
         );
     }
     var before = data.length;
-    ArticleDao.deleteArticle(2, callback);
+    articleDao.deleteArticle(2, callback);
     var after = data.length;
     expect(after).toBeLessThan(before);
-
 });
+
+ */
+
+test("delete one", done => {
+    var before = -1;
+    articleDao.getArticles(some);
+
+    function some(status, data) {
+        console.log("Test callback: status=" + status + ", data.length=" + data.length
+        );
+        before = data.length;
+        articleDao.deleteArticle(2, callback);
+    }
+
+    function callback(status, data) {
+        console.log("Test callback: status=" + status + ", data.length=" + JSON.stringify(data)
+        );
+        expect(data.affectedRows).toBe(1);
+        articleDao.getArticles(after)
+    }
+
+    function after(status, data) {
+        console.log("Test callback: status=" + status + ", data.length=" + data.length
+        );
+        expect(data.length).toBe(before -1);
+        done();
+    }
+})
 
 test("add article to db", done => {
     function callback(status, data) {
@@ -106,7 +135,7 @@ test("add article to db", done => {
         done();
     }
 
-    ArticleDao.createArticle(
+    articleDao.createArticle(
         { title: "New title", picturePath: "New path", pictureAlt: "New alt", pictureCapt: "New capt", text: "New text", author: "My Name", category: "Movies", importance: 2},
         callback
     );
@@ -121,8 +150,8 @@ test("update rating", done => {
         done();
     }
 
-    ArticleDao.updateRating(
-        {likes: 2, dislikes: 1}
+    articleDao.updateRating(
+        {likes: 2, dislikes: 1, id: 1}
         , callback);
 });
 
@@ -135,5 +164,5 @@ test("Ask for none-existent article from db", done => {
         done();
     }
 
-    ArticleDao.getArticle(0, callback);
+    articleDao.getArticle(0, callback);
 });

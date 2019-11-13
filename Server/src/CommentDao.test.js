@@ -4,19 +4,20 @@ const CommentDao = require("./CommentDao.js");
 const runsqlfile = require("./runsqlfile");
 
 var pool = mysql.createPool({
-    connectionLimit: 4,
+    connectionLimit: 9,
     host: "mysql.stud.iie.ntnu.no",
     user: "heleneyj",
     password: "aX3SR1kc",
     database: "heleneyj",
-    debug: false
+    debug: false,
+    multipleStatements: true
 });
 
-let CommentDao = new CommentDao(pool);
+let commentDao = new CommentDao(pool);
 
 beforeAll(done => {
-    runsqlfile("dao/create_tables.sql", pool, () => {
-        runsqlfile("dao/create_testdata.sql", pool, done);
+    runsqlfile("src/create_tables.sql", pool, () => {
+        runsqlfile("src/create_testdata.sql", pool, done);
     })
 });
 
@@ -33,7 +34,7 @@ test("get all comments to article from db", done => {
         done();
     }
 
-    CommentDao.getComments(1, callback);
+    commentDao.getComments(1, callback);
 });
 
 test("add comment to db", done => {
@@ -45,7 +46,7 @@ test("add comment to db", done => {
         done();
     }
 
-    CommentDao.createComment(
+    commentDao.createComment(
         {  articleId: 1, username: 'Bunde', text: 'Ny kommentar'},
         callback
     );
@@ -60,5 +61,5 @@ test("get none-existent from db", done => {
         done();
     }
 
-    CommentDao.getComments(7, callback);
+    commentDao.getComments(7, callback);
 });

@@ -2,8 +2,6 @@ DROP TABLE IF EXISTS annonse;
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS category;
 
-
-
 create table annonse(
 id integer not null auto_increment,
 title varchar(100) not null,

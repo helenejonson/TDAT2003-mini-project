@@ -9,14 +9,15 @@ var pool = mysql.createPool({
     user: "heleneyj",
     password: "aX3SR1kc",
     database: "heleneyj",
-    debug: false
+    debug: false,
+    multipleStatements: true
 });
 
-let CategoryDao = new CategoryDao(pool);
+let categoryDao = new CategoryDao(pool);
 
 beforeAll(done => {
-    runsqlfile("dao/create_tables.sql", pool, () => {
-        runsqlfile("dao/create_testdata.sql", pool, done);
+    runsqlfile("src/create_tables.sql", pool, () => {
+        runsqlfile("src/create_testdata.sql", pool, done);
     })
 });
 
@@ -33,5 +34,5 @@ test("get all categories from db", done => {
         done();
     }
 
-    CategoryDao.getCategories(callback);
+    categoryDao.getCategories(callback);
 });

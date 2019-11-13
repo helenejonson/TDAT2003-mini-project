@@ -12,7 +12,7 @@ insert into comments (articleId, username, text) values
     (1,'CritRoleFan43', 'These are beautiful. I want some'),
     (1,'DiceGoblin', 'Just bought some. I cant wait'),
     (3,'Mike_Skywalker', 'Am I the only one afraid after the second one?'),
-    (4,'DiceGoblin', 'I wonder what happened to Piper'),
+    (4,'DiceGoblin', 'I wonder what happened to Piper');
 
 
 insert into category(name, description) values
