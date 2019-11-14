@@ -21,7 +21,7 @@ var pool = mysql.createPool({
     host: "mysql",
     user: "root",
     password: "secret",
-    database: "heleneyj",
+    database: "supertestdb",
     debug: false,
     multipleStatements: true
 });
