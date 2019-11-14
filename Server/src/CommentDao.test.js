@@ -3,13 +3,25 @@ var mysql = require("mysql");
 const CommentDao = require("./CommentDao.js");
 const runsqlfile = require("./runsqlfile");
 
-
+/*
 var pool = mysql.createPool({
     connectionLimit: 9,
     host: "mysql.stud.iie.ntnu.no",
     user: "heleneyj",
     password: "aX3SR1kc",
     database: "heleneyj",
+    debug: false,
+    multipleStatements: true
+});
+
+ */
+
+var pool = mysql.createPool({
+    connectionLimit: 1,
+    host: "mysql",
+    user: "root",
+    password: "secret",
+    database: "supertestdb",
     debug: false,
     multipleStatements: true
 });
