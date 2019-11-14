@@ -39,14 +39,16 @@ afterAll(() => {
     pool.end();
 });
 
-test("get all categories from db", done => {
-    function callback(status, data) {
-        console.log(
-            "Test callback: status=" + status + ", data.length=" + data.length
-        );
-        expect(data.length).toBeGreaterThanOrEqual(5);
-        done();
-    }
+describe('lalala', () => {
+    test("get all categories from db", done => {
+        function callback(status, data) {
+            console.log(
+                "Test callback: status=" + status + ", data.length=" + data.length
+            );
+            expect(data.length).toBeGreaterThanOrEqual(5);
+            done();
+        }
 
-    categoryDao.getCategories(callback);
+        categoryDao.getCategories(callback);
+    });
 });

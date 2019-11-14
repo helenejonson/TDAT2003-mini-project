@@ -38,67 +38,69 @@ afterAll(() => {
     pool.end();
 });
 
-test("get all comments to article from db", done => {
-    function callback(status, data) {
-        console.log(
-            "Test callback: status=" + status + ", data.length=" + data.length
+describe('lalala', () => {
+    test("get all comments to article from db", done => {
+        function callback(status, data) {
+            console.log(
+                "Test callback: status=" + status + ", data.length=" + data.length
+            );
+            expect(data.length).toBe(2);
+            done();
+        }
+
+        commentDao.getComments(1, callback);
+    });
+
+    test("add comment to db", done => {
+        function callback(status, data) {
+            console.log(
+                "Test callback: status=" + status + ", data=" + JSON.stringify(data)
+            );
+            expect(data.affectedRows).toBeGreaterThanOrEqual(1);
+            done();
+        }
+
+        commentDao.createComment(
+            {articleId: 1, username: 'Bunde', text: 'Ny kommentar'},
+            callback
         );
-        expect(data.length).toBe(2);
-        done();
-    }
+    });
 
-    commentDao.getComments(1, callback);
-});
+    test("get none-existent from db", done => {
+        function callback(status, data) {
+            console.log(
+                "Test callback: status=" + status + ", data.length=" + data.length
+            );
+            expect(data.length).toBe(0);
+            done();
+        }
 
-test("add comment to db", done => {
-    function callback(status, data) {
-        console.log(
-            "Test callback: status=" + status + ", data=" + JSON.stringify(data)
-        );
-        expect(data.affectedRows).toBeGreaterThanOrEqual(1);
-        done();
-    }
+        commentDao.getComments(7, callback);
+    });
 
-    commentDao.createComment(
-        {  articleId: 1, username: 'Bunde', text: 'Ny kommentar'},
-        callback
-    );
-});
+    test("delete comments to article", done => {
+        var before = -1;
+        commentDao.getComments(3, some);
 
-test("get none-existent from db", done => {
-    function callback(status, data) {
-        console.log(
-            "Test callback: status=" + status + ", data.length=" + data.length
-        );
-        expect(data.length).toBe(0);
-        done();
-    }
+        function some(status, data) {
+            console.log("Test callback: status=" + status + ", data.length=" + data.length
+            );
+            before = data.length;
+            commentDao.deleteComment(3, callback);
+        }
 
-    commentDao.getComments(7, callback);
-});
+        function callback(status, data) {
+            console.log("Test callback: status=" + status + ", data.length=" + JSON.stringify(data)
+            );
+            expect(data.affectedRows).toBe(1);
+            commentDao.getComments(3, after)
+        }
 
-test("delete comments to article", done => {
-    var before = -1;
-    commentDao.getComments(3,some);
-
-    function some(status, data) {
-        console.log("Test callback: status=" + status + ", data.length=" + data.length
-        );
-        before = data.length;
-        commentDao.deleteComment(3, callback);
-    }
-
-    function callback(status, data) {
-        console.log("Test callback: status=" + status + ", data.length=" + JSON.stringify(data)
-        );
-        expect(data.affectedRows).toBe(1);
-        commentDao.getComments(3, after)
-    }
-
-    function after(status, data) {
-        console.log("Test callback: status=" + status + ", data.length=" + data.length
-        );
-        expect(data.length).toBe(before -1);
-        done();
-    }
+        function after(status, data) {
+            console.log("Test callback: status=" + status + ", data.length=" + data.length
+            );
+            expect(data.length).toBe(before - 1);
+            done();
+        }
+    });
 });
