@@ -28,9 +28,6 @@ var pool = mysql.createPool({
 
 let commentDao = new CommentDao(pool);
 
-afterAll(() => {
-    pool.end();
-});
 
 describe('lalala', () => {
 
@@ -38,6 +35,10 @@ describe('lalala', () => {
         runsqlfile("src/create_tables.sql", pool, () => {
             runsqlfile("src/create_testdata.sql", pool, done);
         })
+    });
+
+    afterAll(() => {
+        pool.end();
     });
 
     test("get all comments to article from db", done => {

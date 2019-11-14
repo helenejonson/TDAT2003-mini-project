@@ -30,9 +30,7 @@ var pool = mysql.createPool({
 let categoryDao = new CategoryDao(pool);
 
 
-afterAll(() => {
-    pool.end();
-});
+
 
 describe('lalala', () => {
 
@@ -40,6 +38,10 @@ describe('lalala', () => {
         runsqlfile("src/create_tables.sql", pool, () => {
             runsqlfile("src/create_testdata.sql", pool, done);
         })
+    });
+
+    afterAll(() => {
+        pool.end();
     });
 
     test("get all categories from db", done => {
