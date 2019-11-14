@@ -3,7 +3,7 @@ var mysql = require("mysql");
 const CategoryDao = require("./CategoryDao.js");
 const runsqlfile = require("./runsqlfile");
 
-
+/*
 var pool = mysql.createPool({
     connectionLimit: 4,
     host: "mysql.stud.iie.ntnu.no",
@@ -14,8 +14,17 @@ var pool = mysql.createPool({
     multipleStatements: true
 });
 
+ */
 
-
+var pool = mysql.createPool({
+    connectionLimit: 1,
+    host: "mysql",
+    user: "root",
+    password: "secret",
+    database: "supertestdb",
+    debug: false,
+    multipleStatements: true
+});
 
 let categoryDao = new CategoryDao(pool);
 
