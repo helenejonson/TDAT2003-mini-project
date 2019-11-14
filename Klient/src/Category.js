@@ -1,3 +1,4 @@
+// @flow
 import * as React from 'react';
 import { Component, sharedComponentData } from 'react-simplified';
 import {AdvancedSearch} from "./widgets";

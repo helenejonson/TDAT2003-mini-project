@@ -1,3 +1,4 @@
+// @flow
 const Dao = require('./Dao');
 
 module.exports = class CommentDao extends Dao {
