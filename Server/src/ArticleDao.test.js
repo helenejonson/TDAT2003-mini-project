@@ -29,17 +29,20 @@ var pool = mysql.createPool({
 
 let articleDao = new ArticleDao(pool);
 
-beforeAll(done => {
-    runsqlfile("src/create_tables.sql", pool, () => {
-        runsqlfile("src/create_testdata.sql", pool, done);
-    })
-});
+
 
 afterAll(() => {
     pool.end();
 });
 
 describe('lalala', () => {
+
+    beforeAll(done => {
+        runsqlfile("src/create_tables.sql", pool, () => {
+            runsqlfile("src/create_testdata.sql", pool, done);
+        })
+    });
+
     test("get all articles from db", done => {
         function callback(status, data) {
             console.log(
