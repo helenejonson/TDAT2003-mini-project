@@ -9,7 +9,7 @@ picturePath varchar(250) not null,
 pictureAlt varchar(100) not null,
 pictureCapt varchar(100) not null,
 text varchar(21000) not null,
-date DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 author varchar(50) not null,
 category varchar(30) not null,
 importance smallint not null,
@@ -23,9 +23,11 @@ commentId integer not null auto_increment,
 articleId integer not null,
 username varchar (50) not null,
 text varchar(1000) not null,
-date DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (commentId)
 );
+
+/*date DATETIME NULL DEFAULT CURRENT_TIMESTAMP,*/
 
 create table category(
 categoryId integer not null auto_increment,
