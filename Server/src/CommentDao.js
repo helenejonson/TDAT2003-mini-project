@@ -14,4 +14,12 @@ module.exports = class CommentDao extends Dao {
             callback
         );
     }
+
+    deleteComment(id, callback) {
+        super.query(
+            "Delete from comments where articleId = ?",
+            [id],
+            callback
+        );
+    }
 };

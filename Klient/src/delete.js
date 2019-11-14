@@ -32,7 +32,7 @@ export class Delete extends Component<{ id: number } > {
 
     articleDelete(){
 
-        databaseService.deleteArticle(this.props.id).then(
+        databaseService.deleteComment(this.props.id).then(databaseService.deleteArticle(this.props.id)).then(
             history.push('/')
         )
             .catch(e => console.error(e));

@@ -12,6 +12,8 @@ var pool = mysql.createPool({
     database: "heleneyj",
     debug: false
 });
+
+
 var articleDao = new ArticleDao(pool);
 var commentDao = new CommentDao(pool);
 var categoryDao = new CategoryDao(pool);
@@ -82,9 +84,18 @@ app.delete("/annonse/:id", (req, res) => {
     });
 });
 
+
 app.post("/annonse/:articleId/comment", (req, res) => {
     console.log("/annonse/:articleId/comment: fikk request fra klient");
     commentDao.createComment(req.body, (status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
+app.delete("/annonse/:articleId/comment", (req, res) => {
+    console.log("/annonse/:articleId/comment: fikk request fra klient");
+    commentDao.deleteComment(req.params.articleId, (status, data) => {
         res.status(status);
         res.json(data);
     });

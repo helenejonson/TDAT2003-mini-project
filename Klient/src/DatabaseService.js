@@ -88,6 +88,9 @@ class DatabaseService {
         return axios.delete<Article, void>('http://localhost:8080/annonse/' + id);
     }
 
+    deleteComment(articleId: number) {
+        return axios.delete<Comment, void>('http://localhost:8080/annonse/' + articleId + '/comment');
+    }
 
     updateRating(article: Article) {
         console.log('se her helene');

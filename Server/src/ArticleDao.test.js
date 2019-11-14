@@ -13,6 +13,7 @@ var pool = mysql.createPool({
     multipleStatements: true
 });
 
+
 let articleDao = new ArticleDao(pool);
 
 beforeAll(done => {
@@ -86,20 +87,6 @@ test("get one article from db", done => {
     articleDao.getArticle(1, callback);
 });
 
-/*
-test("delete article", done => {
-    function callback(status, data) {
-        console.log("Test callback: status=" + status + ", data.length=" + data.length
-        );
-    }
-    var before = data.length;
-    articleDao.deleteArticle(2, callback);
-    var after = data.length;
-    expect(after).toBeLessThan(before);
-});
-
- */
-
 test("delete one", done => {
     var before = -1;
     articleDao.getArticles(some);
@@ -124,7 +111,7 @@ test("delete one", done => {
         expect(data.length).toBe(before -1);
         done();
     }
-})
+});
 
 test("add article to db", done => {
     function callback(status, data) {

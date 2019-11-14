@@ -3,11 +3,24 @@ var mysql = require("mysql");
 const CommentDao = require("./CommentDao.js");
 const runsqlfile = require("./runsqlfile");
 
+/*
 var pool = mysql.createPool({
     connectionLimit: 9,
     host: "mysql.stud.iie.ntnu.no",
     user: "heleneyj",
     password: "aX3SR1kc",
+    database: "heleneyj",
+    debug: false,
+    multipleStatements: true
+});
+
+ */
+
+var pool = mysql.createPool({
+    connectionLimit: 1,
+    host: "mysql",
+    user: "root",
+    password: "secret",
     database: "heleneyj",
     debug: false,
     multipleStatements: true
@@ -62,4 +75,30 @@ test("get none-existent from db", done => {
     }
 
     commentDao.getComments(7, callback);
+});
+
+test("delete comments to article", done => {
+    var before = -1;
+    commentDao.getComments(3,some);
+
+    function some(status, data) {
+        console.log("Test callback: status=" + status + ", data.length=" + data.length
+        );
+        before = data.length;
+        commentDao.deleteComment(3, callback);
+    }
+
+    function callback(status, data) {
+        console.log("Test callback: status=" + status + ", data.length=" + JSON.stringify(data)
+        );
+        expect(data.affectedRows).toBe(1);
+        commentDao.getComments(3, after)
+    }
+
+    function after(status, data) {
+        console.log("Test callback: status=" + status + ", data.length=" + data.length
+        );
+        expect(data.length).toBe(before -1);
+        done();
+    }
 });
