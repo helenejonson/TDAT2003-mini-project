@@ -3,7 +3,7 @@ var mysql = require("mysql");
 const CommentDao = require("./CommentDao.js");
 const runsqlfile = require("./runsqlfile");
 
-/*
+
 var pool = mysql.createPool({
     connectionLimit: 9,
     host: "mysql.stud.iie.ntnu.no",
@@ -14,8 +14,8 @@ var pool = mysql.createPool({
     multipleStatements: true
 });
 
- */
 
+/*
 var pool = mysql.createPool({
     connectionLimit: 1,
     host: "mysql",
@@ -26,10 +26,10 @@ var pool = mysql.createPool({
     multipleStatements: true
 });
 
+ */
+
 let commentDao = new CommentDao(pool);
 
-
-describe('lalala', () => {
 
     beforeAll(done => {
         runsqlfile("src/create_tables.sql", pool, () => {
@@ -105,4 +105,3 @@ describe('lalala', () => {
             done();
         }
     });
-});
