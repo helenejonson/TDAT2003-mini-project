@@ -13,8 +13,8 @@
       "json",
       "html"
     ],
-    "globalSetup": "C:NTNU\\Systemutvikling\\mini-project\\Server\\src\\setup.js" ,
-    "globalTeardown": "C:\\NTNU\\Systemutvikling\\mini-project\\Server\\src\\teardown.js"
+    "globalSetup": "./src/setup.js" ,
+    "globalTeardown": "./src/teardown.js"
   },
   "scripts": {
     "test": "jest"
