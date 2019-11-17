@@ -13,7 +13,6 @@ var pool = mysql.createPool({
 
 
 module.exports = async function() {
-  await global.__MONGOD__.stop();
-    pool.end();
+  await global.__MONGOD__.pool.end();
 };
 

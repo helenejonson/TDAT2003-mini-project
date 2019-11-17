@@ -12,11 +12,11 @@ var pool = mysql.createPool({
 });
 
 module.exports = async () => {
+  runsqlfile("src/create_tables.sql", pool, () => {
+    runsqlfile("src/create_testdata.sql", pool, f);
+  });
+  global.__MONGOD__ = pool;
 
-  global.__MONGOD__ =
-    runsqlfile("src/create_tables.sql", pool, () => {
-      runsqlfile("src/create_testdata.sql", pool, f);
-    });
 };
 
 function f() {
