@@ -14,8 +14,6 @@ var pool = mysql.createPool({
 
 module.exports = async function() {
   await global.__MONGOD__.stop();
-  afterAll(() => {
     pool.end();
-  });
-
 };
+
