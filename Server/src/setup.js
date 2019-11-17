@@ -10,7 +10,7 @@ var pool = mysql.createPool({
   debug: false,
   multipleStatements: true
 });
-let global;
+
 
 module.exports = async () => {
   runsqlfile("src/create_tables.sql", pool, () => {
