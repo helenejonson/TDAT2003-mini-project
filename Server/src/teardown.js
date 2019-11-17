@@ -11,6 +11,11 @@ var pool = mysql.createPool({
   multipleStatements: true
 });
 
-afterAll(() => {
-  pool.end();
-});
+
+module.exports = async function() {
+  await global.__MONGOD__.stop();
+  afterAll(() => {
+    pool.end();
+  });
+
+};
