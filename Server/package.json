@@ -13,7 +13,7 @@
       "json",
       "html"
     ],
-    "globalSetup": "\\src\\setup.js" ,
+    "globalSetup": "<rootDir>\\src\\setup.js" ,
     "globalTeardown": "C:\\NTNU\\Systemutvikling\\mini-project\\Server\\src\\teardown.js"
   },
   "scripts": {
