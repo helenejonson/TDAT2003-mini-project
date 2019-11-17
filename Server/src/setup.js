@@ -10,11 +10,13 @@ var pool = mysql.createPool({
   debug: false,
   multipleStatements: true
 });
+let global;
 
 module.exports = async () => {
   runsqlfile("src/create_tables.sql", pool, () => {
     runsqlfile("src/create_testdata.sql", pool, f);
   });
+
   global.__MONGOD__ = pool;
 
 };

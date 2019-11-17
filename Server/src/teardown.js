@@ -1,6 +1,7 @@
 var mysql = require("mysql");
 const runsqlfile = require("./runsqlfile");
 
+/*
 var pool = mysql.createPool({
   connectionLimit: 1,
   host: "mysql",
@@ -11,8 +12,14 @@ var pool = mysql.createPool({
   multipleStatements: true
 });
 
+ */
+
 
 module.exports = async function() {
   await global.__MONGOD__.pool.end();
 };
+
+
+
+
 
