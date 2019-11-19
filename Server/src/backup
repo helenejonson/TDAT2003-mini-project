@@ -9,3 +9,53 @@ beforeAll(done => {
     });
 
     lalala
+
+
+
+image: node:8
+
+# Set up MySQL test-database
+services:
+  - mysql:5.5
+
+# Configure test-database
+variables:
+  MYSQL_DATABASE: supertestdb
+  MYSQL_ROOT_PASSWORD: secret
+
+
+test:
+  script:
+    - npm install -g flow-bin
+    - cd daoServer
+    - npm install
+    - npm test
+    - flow check src
+#    - cd daoServer && npm install && npm test && flow check src
+#    - cd ../client && npm install && npm test && flow check src
+    - cd ../client
+    - npm install
+    - npm test
+#    - cd ../Client && npm install && npm test
+  artifacts:
+    paths:
+      - daoServer/coverage
+      - client/coverage
+
+
+pages:
+  stage: deploy
+  dependencies:
+    - test
+  script:
+    - mkdir .public
+    - mkdir .public/client
+    - mkdir .public/server
+    - cp -r client/coverage/* .public/client
+    - cp -r daoServer/coverage/* .public/server
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
