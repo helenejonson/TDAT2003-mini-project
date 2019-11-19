@@ -34,8 +34,8 @@ pages:
     - mkdir .public
     - mkdir .public/client
     - mkdir .public/server
-    - cp -r Klient/coverage/* .public/client
-    - cp -r Server/coverage/* .public/server
+    - cp -r Klient/coverage .public/client
+    - cp -r Server/coverage .public/server
     - mv .public public
   artifacts:
     paths:
