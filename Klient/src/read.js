@@ -7,18 +7,27 @@ import MarkdownRenderer from 'react-markdown-renderer';
 import {databaseService} from "./DatabaseService";
 import {Comments} from "./Comments";
 import {Delete} from "./delete";
+import {Alert} from './widgets';
 
 
 export class Read extends Component<{ match: { params: { id: number } } }> {
 
     article: Article  = null;
 
-    mounted(): void {
-        databaseService.getArticle(this.props.match.params.id).then(article => (this.article = article))
+    mounted() {
+        databaseService.getArticle(this.props.match.params.id).
+        then(article => {
+            if(article === null) {
+                Alert.danger("Article does not exist");
+            }else{
+                (this.article = article)
+            }})
+          .catch((error: Error) => Alert.danger(error.message));
     }
 
     render(){
         let article = this.article;
+        console.log(article);
         if(article) {
             return (
                 <div>
@@ -55,11 +64,11 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
             );
         }else{
             return(
-                <div>
-                    <h1 className="categoryTitle">
-                        Loading... please stand by
-                    </h1>
-                </div>
+              <div>
+                  <h1 className="categoryTitle">
+                      Loading... please stand by
+                  </h1>
+              </div>
             )
 
         }

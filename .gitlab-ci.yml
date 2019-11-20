@@ -9,9 +9,6 @@ variables:
   MYSQL_DATABASE: supertestdb
   MYSQL_ROOT_PASSWORD: secret
 
-
-
-
 # Run JEST tests
 server_tests:
   stage: test

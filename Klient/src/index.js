@@ -14,6 +14,7 @@ import {categoryList, f} from "./Category";
 import {CategoryArt} from "./Category";
 import {Newsfeed} from "./newsfeed";
 import {New} from "./new";
+import { Alert } from './widgets';
 
 
 const root = document.getElementById('root');
@@ -115,6 +116,7 @@ if (root)
         <HashRouter>
             <Route exact path="/" component={Head} />
             <Menu/>
+            <Alert/>
             <Route exact path="/" component={Home} />
             <Route exact path="/NewArticle" component={ArticleEditor} />
             <Route exact path="/Article/:id" component={Read} />

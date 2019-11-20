@@ -70,7 +70,7 @@ export class Comments extends Component<{ id: number } > {
                         this.comments.map(e => (<div className='comments-box'>
                             <h5>{e.username}</h5>
                             <p>{e.text}</p>
-                            <p>{e.date.toLocaleString()}</p>
+                            <small>{e.date.toLocaleString()}</small>
                         </div>
                     )) : null}
                 </div>

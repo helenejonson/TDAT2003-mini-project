@@ -57,7 +57,12 @@ class DatabaseService {
         return axios.get<Article>('http://localhost:8080/annonse/' + id).then(response => {
             let a = response.data[0];
             console.log(a);
-            return new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes)
+            if(a === undefined){
+                return null;
+            }else{
+                return new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes)
+            }
+
         })
             .catch(error => console.error(error));
     }

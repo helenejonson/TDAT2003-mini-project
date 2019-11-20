@@ -84,7 +84,7 @@ text-align: right;
 }
 
 .pictureCapt{
-    padding-left: 100px;
+    text-align: center;
 }
 
 .newComment{
@@ -156,6 +156,10 @@ text-align: right;
 .newsBar{
     color: white;
     padding: 150px;
+}
+
+.pictureSizePreview{
+    padding: 5px;
 }
 
 

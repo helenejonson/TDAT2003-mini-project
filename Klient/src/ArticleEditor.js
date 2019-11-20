@@ -148,9 +148,9 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
           <div className="collapse" id="collapsePreview">
             <div className='preview'>
               <div className='mini-article'>
-                <h1 className='articleTitle'> {this.article.title} </h1>
+                <h4 className='articleTitle'> {this.article.title} </h4>
                 <figure>
-                  <img className='pictureSize' src={this.article.picturePath} alt={this.article.pictureAlt}/>
+                  <img className='pictureSizePreview' src={this.article.picturePath} alt={this.article.pictureAlt}/>
                   <figcaption className='pictureCapt'>{this.article.pictureCapt}</figcaption>
                 </figure>
                 <br/>
