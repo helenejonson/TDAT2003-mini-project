@@ -27,7 +27,7 @@ server_tests:
 pages:
   stage: deploy
   dependencies:
-    - run_tests
+    - server_tests
   script:
     - mkdir .public
     #- mkdir .public/client
