@@ -12,8 +12,8 @@ var pool = mysql.createPool({
 });
 
 module.exports = async () => {
-  runsqlfile("src/create_tables.sql", pool, () => {
-    runsqlfile("src/create_testdata.sql", pool, f);
+  runsqlfile("src/serverTest/create_tables.sql", pool, () => {
+    runsqlfile("src/serverTest/create_testdata.sql", pool, f);
   });
   global.__MONGOD__ = pool;
 
