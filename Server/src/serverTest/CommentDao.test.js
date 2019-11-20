@@ -1,6 +1,6 @@
 var mysql = require("mysql");
 
-const CommentDao = require("./CommentDao.js");
+const CommentDao = require("../database/CommentDao.js");
 const runsqlfile = require("./runsqlfile");
 
 /*

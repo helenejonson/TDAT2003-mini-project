@@ -1,6 +1,6 @@
 var mysql = require("mysql");
 
-const CategoryDao = require("./CategoryDao.js");
+const CategoryDao = require("../database/CategoryDao.js");
 const runsqlfile = require("./runsqlfile");
 
 /*
