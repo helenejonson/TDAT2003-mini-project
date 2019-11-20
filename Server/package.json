@@ -13,8 +13,8 @@
       "json",
       "html"
     ],
-    "globalSetup": "./src/setup.js" ,
-    "globalTeardown": "./src/teardown.js"
+    "globalSetup": "./src/serverTest/setup.js" ,
+    "globalTeardown": "./src/serverTest/teardown.js"
   },
   "scripts": {
     "test": "jest"
