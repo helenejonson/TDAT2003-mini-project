@@ -20,6 +20,17 @@ server_tests:
     paths:
       - Server/coverage
 
+#Run Jest tests klient
+client_tests:
+  stage: test
+  script:
+    - cd Klient
+    - npm install
+    - npm test
+  artifacts:
+    paths:
+      - Klient/coverage
+
 # Publish coverage report on gitlab-pages
 pages:
   stage: deploy
@@ -27,9 +38,9 @@ pages:
     - server_tests
   script:
     - mkdir .public
-    #- mkdir .public/client
+    - mkdir .public/client
     - mkdir .public/server
-    #- cp -r Klient/coverage/* .public/client
+    - cp -r Klient/coverage/* .public/client
     - cp -r Server/coverage/* .public/server
     - mv .public public
   artifacts:

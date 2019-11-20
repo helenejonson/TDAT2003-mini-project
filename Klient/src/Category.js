@@ -31,7 +31,7 @@ export let categoryList = sharedComponentData({
     new Category(3,'MTG', 'All new card, lore and how-to'),
 ]
 });
-console.log(categoryList);
+//console.log(categoryList);
 
 export function f() {
     return databaseService.getCategoryList()
