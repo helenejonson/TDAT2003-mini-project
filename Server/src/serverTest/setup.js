@@ -1,8 +1,8 @@
 // @flow
 var mysql = require("mysql");
 const runsqlfile = require("./runsqlfile");
-require("babel-core/register");
-require("babel-polyfill");
+//require("babel-core/register");
+//require("babel-polyfill");
 
 var pool = mysql.createPool({
   connectionLimit: 1,
