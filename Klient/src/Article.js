@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 
-
 export class Article {
   id: number;
   title: string;
@@ -16,7 +15,20 @@ export class Article {
   likes: number;
   dislikes: number;
 
-  constructor(id: number, title: string, picturePath: string, pictureAlt: string, pictureCapt: string, text: string, date: Date, author: string, category: string, importance: number, likes: number, dislikes: number) {
+  constructor(
+    id: number,
+    title: string,
+    picturePath: string,
+    pictureAlt: string,
+    pictureCapt: string,
+    text: string,
+    date: Date,
+    author: string,
+    category: string,
+    importance: number,
+    likes: number,
+    dislikes: number
+  ) {
     this.id = id;
     this.title = title;
     this.picturePath = picturePath;
@@ -31,7 +43,3 @@ export class Article {
     this.dislikes = dislikes;
   }
 }
-
-
-
-
