@@ -15,7 +15,7 @@ module.exports = class ArticleDao extends Dao {
         super.query("Select * from annonse order by date desc limit 5", [], callback);
     }
 
-    getCategory(category, callback) {
+    getCategory(category: string, callback) {
         super.query(
             "Select * from annonse where category = ?",
             [category],
