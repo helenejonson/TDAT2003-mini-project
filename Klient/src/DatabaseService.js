@@ -7,6 +7,7 @@ import {Comment} from "./Comments";
 import {Category} from "./Category";
 
 class DatabaseService {
+    /*
     getImpArticles() {
         return new Promise((resolve, reject) => {
             axios.get<Article[]>('http://localhost:8080/annonse/viktig')
@@ -20,6 +21,23 @@ class DatabaseService {
         });
     }
 
+     */
+    getImpArticles() {
+        return axios.get<Article[]>('http://localhost:8080/annonse/viktig')
+          .then(response => {
+              let b = response.data;
+              console.log(b);
+              if(b.length === 0){
+                  return null;
+              }else {
+                  return response.data.map(a =>
+                    new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes))
+              }
+
+
+          })
+          .catch(error => console.log(error));
+    }
     getNewsfeed() {
         return axios.get<Article[]>('http://localhost:8080/annonse/newsfeed')
             .then(response => {
@@ -34,9 +52,15 @@ class DatabaseService {
     getArticles() {
         return axios.get<Article[]>('http://localhost:8080/annonse')
             .then(response => {
+                    let b = response.data;
+                    console.log(b);
+                    if(b.length === 0){
+                        return null;
+                    }else {
+                        return response.data.map(a =>
+                          new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes))
+                    }
 
-                return response.data.map(a =>
-                    new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes))
 
             })
             .catch(error => console.log(error));
@@ -67,12 +91,15 @@ class DatabaseService {
             .catch(error => console.error(error));
     }
 
-    updateArticle(article: Article) {
-        return axios.put<Article, void>('http://localhost:8080/annonse', article).then(response => response.data);
-    }
 
     addArticle(article: Article) {
         return axios.post<Article, void>('http://localhost:8080/annonse', article).then(response => response.data);
+    }
+
+    updateArticle(article: Article) {
+        console.log('se her nå');
+        console.log(article);
+        return axios.put('http://localhost:8080/annonse/update', article);
     }
 
     addComment(comment: Comment) {

@@ -15,6 +15,7 @@ import {CategoryArt} from "./Category";
 import {Newsfeed} from "./newsfeed";
 import {New} from "./new";
 import { Alert } from './widgets';
+import {UpdateArticle} from './updateArticle';
 
 
 const root = document.getElementById('root');
@@ -44,22 +45,22 @@ export class Menu extends Component {
                     <a className="navbar-brand" href="#" >Home </a>
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <NavLink className="nav-link" style={{color: 'white'}} activeStyle={{ color: "gray" }} to="/New">
+                            <NavLink className="nav-link" style={{color: 'red'}} activeStyle={{ color: "gray" }} to="/New">
                                 New
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                                <NavLink className="nav-link" style={{color: 'white'}} activeStyle={{ color: 'gray' }} to="/NewArticle">
+                                <NavLink className="nav-link" style={{color: 'red'}} activeStyle={{ color: 'gray' }} to="/NewArticle">
                                     New Article
                                 </NavLink>
                         </li>
                         <li className="nav-item">
-                                <NavLink className="nav-link" style={{color: 'white'}} activeStyle={{ color: "gray" }} to="/search">
+                                <NavLink className="nav-link" style={{color: 'red'}} activeStyle={{ color: "gray" }} to="/search">
                                    Advanced search
                                 </NavLink>
                         </li>
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" style={{color: 'white'}}  role="button"
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" style={{color: 'red'}}  role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Category
                             </a>
@@ -76,7 +77,7 @@ export class Menu extends Component {
                             </div>
                         </li>
                         <li className="nav-item log">
-                                <NavLink className="nav-link" style={{color: 'white'}} activeStyle={{ color: "gray" }} to="/logIn">
+                                <NavLink className="nav-link" style={{color: 'red'}} activeStyle={{ color: "gray" }} to="/logIn">
                                     logIn
                                 </NavLink>
                         </li>
@@ -120,6 +121,7 @@ if (root)
             <Route exact path="/" component={Home} />
             <Route exact path="/NewArticle" component={ArticleEditor} />
             <Route exact path="/Article/:id" component={Read} />
+            <Route exact path="/Article/:id/update" component={UpdateArticle} />
             <Route exact path="/search" component={AdvancedSearch2} />
             <Route exact path="/logIn" component={logIn} />
             <Route exact path="/Register" component={Register} />

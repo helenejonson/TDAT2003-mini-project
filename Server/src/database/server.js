@@ -61,6 +61,15 @@ app.get("/annonse/:id(\\d+)", (req, res) => {
     });
 });
 
+app.put("/annonse/update", (req, res) => {
+    console.log("/annonse/update: fikk request fra klient");
+    articleDao.updateArticle(req.body, (status, data) => {
+        console.log(data);
+        res.status(status);
+        res.json(data);
+    });
+});
+
 app.get("/annonse/category/:category", (req, res) => {
     console.log("/annonse/category/:category: fikk request fra klient");
     articleDao.getCategory(req.params.category, (status, data) => {

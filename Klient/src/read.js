@@ -8,6 +8,8 @@ import {databaseService} from "./DatabaseService";
 import {Comments} from "./Comments";
 import {Delete} from "./delete";
 import {Alert} from './widgets';
+import {UpdateArticle} from './updateArticle';
+import { NavLink } from "react-router-dom";
 
 
 export class Read extends Component<{ match: { params: { id: number } } }> {
@@ -59,6 +61,10 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
                         <Comments id={this.props.match.params.id}/>
 
                         <Delete id={this.props.match.params.id}/>
+
+                        <NavLink className="nav-link" style={{color: 'blue'}} activeStyle={{ color: "gray" }} to={"/Article/" + this.props.match.params.id + "/update"}>
+                            Update Article
+                        </NavLink>
                     </div>
                 </div>
             );

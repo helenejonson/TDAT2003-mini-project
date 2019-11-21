@@ -163,6 +163,20 @@ let articleDao = new ArticleDao(pool);
             , callback);
     });
 
+test("update article", done => {
+    function callback(status, data) {
+        console.log(
+          "Test callback: status=" + status + ", data=" + JSON.stringify(data)
+        );
+        expect(data.affectedRows).toBeGreaterThanOrEqual(1);
+        done();
+    }
+
+    articleDao.updateArticle(
+      {title: "New Title", picturePath: "New picturePath", pictureAlt: "New pictureAlt", pictureCapt: "New pictureCapt", text: "Updated Text", author: "ME", category: "D&D", importance: 1, id: 4}
+      , callback);
+});
+
     test("Ask for none-existent article from db", done => {
         function callback(status, data) {
             console.log(

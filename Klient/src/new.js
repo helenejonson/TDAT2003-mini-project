@@ -2,16 +2,22 @@
 import * as React from 'react';
 import {Component} from "react-simplified";
 import {ArticleCard, Card, imag} from "./Card";
-import {AdvancedSearch} from "./widgets";
+import { AdvancedSearch, Alert } from './widgets';
 import {Article} from "./Article";
 import {databaseService} from "./DatabaseService";
 
 
 export class New extends Component {
     articles: Article[] = [];
-    mounted(): void {
+    mounted() {
         databaseService.getArticles().then(data => {
-            this.articles = data;
+            console.log(data);
+            if(data === null){
+                Alert.danger("No articles in the database");
+            }else{
+                this.articles = data;
+            }
+
         }).catch(err => {
             console.log("FEIL DEBUG: ", err);
         });

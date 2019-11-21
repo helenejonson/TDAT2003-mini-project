@@ -46,7 +46,7 @@ export class AdvancedSearch extends Component{
                         </div>
                     ))}
                     <h4>Date</h4>
-                    <h7>Write in fromat YYYY-MM-DD</h7>
+                    <h4>Write in fromat YYYY-MM-DD</h4>
                     <form>
                         <div className="form-row">
                             <div className="col">
@@ -89,7 +89,7 @@ export class AdvancedSearch2 extends Component{
                         </div>
                     ))}
                     <h4>Date</h4>
-                    <h7>Write in fromat YYYY-MM-DD</h7>
+                    <h4>Write in fromat YYYY-MM-DD</h4>
                     <form>
                         <div className="form-row">
                             <div className="col">

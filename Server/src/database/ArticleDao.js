@@ -48,6 +48,13 @@ module.exports = class ArticleDao extends Dao {
         );
     }
 
+    updateArticle({title, picturePath, pictureAlt, pictureCapt, text, author, category, importance, id}, callback) {
+        var val = [title, picturePath, pictureAlt, pictureCapt, text, author, category, importance, id];
+        super.query(
+        "UPDATE annonse SET title = ?, picturePath = ?, pictureAlt = ?, pictureCapt = ?, text = ?,author = ?, category = ?, importance = ? where id = ?",
+          val, callback);
+    }
+
     updateRating({likes, dislikes, id}, callback) {
         var val = [likes, dislikes, id];
         super.query("UPDATE annonse SET likes = ?, dislikes = ? WHERE id = ?;", val, callback);
