@@ -8,7 +8,6 @@ import { databaseService } from './DatabaseService';
 import { Comments } from './Comments';
 import { Delete } from './delete';
 import { Alert } from './widgets';
-import { UpdateArticle } from './updateArticle';
 import { NavLink } from 'react-router-dom';
 
 export class Read extends Component<{ match: { params: { id: number } } }> {

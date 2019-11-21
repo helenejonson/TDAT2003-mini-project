@@ -3,8 +3,6 @@ import * as React from 'react';
 import { Component } from 'react-simplified';
 import MarkdownRenderer from 'react-markdown-renderer';
 import { databaseService } from './DatabaseService';
-import { Comments } from './Comments';
-import { Delete } from './delete';
 import { Alert } from './widgets';
 import SimpleMDE from 'react-simplemde-editor';
 import { createHashHistory } from 'history';
