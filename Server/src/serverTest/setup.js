@@ -1,8 +1,7 @@
 // @flow
 var mysql = require("mysql");
 const runsqlfile = require("./runsqlfile");
-//require("babel-core/register");
-//require("babel-polyfill");
+const regeneratorRuntime = require('regenerator-runtime/runtime');
 
 var pool = mysql.createPool({
   connectionLimit: 1,
