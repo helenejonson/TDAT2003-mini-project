@@ -1,3 +1,4 @@
+// @flow
 var mysql = require("mysql");
 
 const CommentDao = require("../database/CommentDao.js");

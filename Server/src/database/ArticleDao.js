@@ -1,4 +1,4 @@
-
+// @flow
 const Dao = require('./Dao');
 
 module.exports = class ArticleDao extends Dao {

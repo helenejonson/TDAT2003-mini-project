@@ -1,3 +1,4 @@
+// @flow
 var mysql = require("mysql");
 
 const CategoryDao = require("../database/CategoryDao.js");
