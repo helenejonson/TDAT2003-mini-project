@@ -54,7 +54,7 @@ app.get('/annonse/newsfeed', (req, res) => {
 
 app.get('/annonse/:id(\\d+)', (req, res) => {
   console.log('/annonse/:id(\\d+): fikk request fra klient');
-  articleDao.getArticle(req.params.id, (status, data) => {
+  articleDao.getArticle(parseInt(req.params.id), (status, data) => {
     res.status(status);
     res.json(data);
   });
@@ -87,7 +87,7 @@ app.post('/annonse', (req, res) => {
 
 app.delete('/annonse/:id', (req, res) => {
   console.log('/annonse: fikk request fra klient');
-  articleDao.deleteArticle(req.params.id, (status, data) => {
+  articleDao.deleteArticle(parseInt(req.params.id), (status, data) => {
     res.status(status);
     res.json(data);
   });
@@ -103,7 +103,7 @@ app.post('/annonse/:articleId/comment', (req, res) => {
 
 app.delete('/annonse/:articleId/comment', (req, res) => {
   console.log('/annonse/:articleId/comment: fikk request fra klient');
-  commentDao.deleteComment(req.params.articleId, (status, data) => {
+  commentDao.deleteComment(parseInt(req.params.articleId), (status, data) => {
     res.status(status);
     res.json(data);
   });
@@ -111,7 +111,7 @@ app.delete('/annonse/:articleId/comment', (req, res) => {
 
 app.get('/annonse/:articleId/comment', (req, res) => {
   console.log('/annonse/:articleId/comment: fikk request fra klient');
-  commentDao.getComments(req.params.articleId, (status, data) => {
+  commentDao.getComments(parseInt(req.params.articleId), (status, data) => {
     res.status(status);
     res.json(data);
   });

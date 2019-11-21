@@ -166,7 +166,6 @@ class DatabaseService {
   }
 
   updateArticle(article: Article) {
-    console.log('se her nå');
     console.log(article);
     return axios.put('http://localhost:8080/annonse/update', article);
   }

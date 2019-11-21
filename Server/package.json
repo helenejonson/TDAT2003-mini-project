@@ -17,6 +17,7 @@
     "globalTeardown": "./src/serverTest/teardown.js"
   },
   "scripts": {
+    "start": "nodemon --exec babel-node src/database/server.js",
     "test": "jest"
   },
   "devDependencies": {
