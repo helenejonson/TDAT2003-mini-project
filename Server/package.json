@@ -13,7 +13,7 @@
       "json",
       "html"
     ],
-    "globalSetup": "./src/serverTest/setup.js" ,
+    "globalSetup": "./src/serverTest/setup.js",
     "globalTeardown": "./src/serverTest/teardown.js"
   },
   "scripts": {
