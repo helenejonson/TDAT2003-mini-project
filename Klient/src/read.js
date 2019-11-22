@@ -8,7 +8,9 @@ import { databaseService } from './DatabaseService';
 import { Comments } from './Comments';
 import { Delete } from './delete';
 import { Alert } from './widgets';
-import { NavLink } from 'react-router-dom';
+import { createHashHistory } from 'history';
+
+const history = createHashHistory();
 
 export class Read extends Component<{ match: { params: { id: number } } }> {
   article: Article = null;
@@ -66,14 +68,9 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
 
             <Delete id={this.props.match.params.id} />
 
-            <NavLink
-              className="nav-link"
-              style={{ color: 'blue' }}
-              activeStyle={{ color: 'gray' }}
-              to={'/Article/' + this.props.match.params.id + '/update'}
-            >
-              Update Article
-            </NavLink>
+            <button type="button" className="btn btn-primary" onClick={this.pushUpdate}>
+              Update
+            </button>
           </div>
         </div>
       );
@@ -94,5 +91,9 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
   pushDislike() {
     this.article.dislikes = this.article.dislikes + 1;
     databaseService.updateRating(this.article).catch(e => console.error(e));
+  }
+
+  pushUpdate() {
+    history.push('/Article/' + this.props.match.params.id + '/update');
   }
 }

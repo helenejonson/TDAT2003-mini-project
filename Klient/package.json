@@ -26,6 +26,7 @@
     "url": "git@gitlab.stud.idi.ntnu.no:helebeyj/mini-project.git"
   },
   "dependencies": {
+    "codemirror": "^5.49.2",
     "history": "^4.10.1",
     "react-axios": "^2.0.3",
     "react-markdown-renderer": "^1.4.0",

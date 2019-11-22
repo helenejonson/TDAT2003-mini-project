@@ -7,7 +7,7 @@ import { HashRouter, Route, NavLink } from 'react-router-dom';
 import { Home } from './frontPage.js';
 import { Read } from './read.js';
 import { ArticleEditor } from './ArticleEditor.js';
-import { AdvancedSearch2 } from './widgets.js';
+import { AdvSearch } from './search';
 import { logIn } from './logIn';
 import { Register } from './logIn';
 import { categoryList, f } from './Category';
@@ -16,8 +16,11 @@ import { Newsfeed } from './newsfeed';
 import { New } from './new';
 import { Alert } from './widgets';
 import { UpdateArticle } from './updateArticle';
+import { Search } from './search';
+import { createHashHistory } from 'history';
 
 const root = document.getElementById('root');
+const history = createHashHistory();
 
 export class Head extends Component {
   render() {
@@ -32,6 +35,7 @@ export class Head extends Component {
 f();
 
 export class Menu extends Component {
+  word: string = null;
   render() {
     return (
       <div>
@@ -44,17 +48,22 @@ export class Menu extends Component {
           </a>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink className="nav-link" style={{ color: 'red' }} activeStyle={{ color: 'gray' }} to="/New">
+              <NavLink className="nav-link" style={{ color: 'red' }} activeStyle={{ color: 'darkgray' }} to="/New">
                 New
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" style={{ color: 'red' }} activeStyle={{ color: 'gray' }} to="/NewArticle">
+              <NavLink
+                className="nav-link"
+                style={{ color: 'red' }}
+                activeStyle={{ color: 'darkgray' }}
+                to="/NewArticle"
+              >
                 New Article
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" style={{ color: 'red' }} activeStyle={{ color: 'gray' }} to="/search">
+              <NavLink className="nav-link" style={{ color: 'red' }} activeStyle={{ color: 'darkgray' }} to="/search">
                 Advanced search
               </NavLink>
             </li>
@@ -77,7 +86,7 @@ export class Menu extends Component {
                     <NavLink
                       class="myList"
                       style={{ color: 'black' }}
-                      activeStyle={{ color: 'gray' }}
+                      activeStyle={{ color: 'white' }}
                       to={'/category/' + e.name}
                     >
                       {e.name}
@@ -88,16 +97,37 @@ export class Menu extends Component {
               </div>
             </li>
             <li className="nav-item log">
-              <NavLink className="nav-link" style={{ color: 'red' }} activeStyle={{ color: 'gray' }} to="/logIn">
+              <NavLink className="nav-link" style={{ color: 'red' }} activeStyle={{ color: 'darkgray' }} to="/logIn">
                 logIn
               </NavLink>
             </li>
+          </ul>
+          <ul className="navbar-nav ml-auto">
+            <form className="form-inline my-2 my-lg-0">
+              <input
+                className="form-control mr-sm-2 searchInput"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.word = event.target.value)}
+              />
+              <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={this.searchArt}>
+                Search
+              </button>
+            </form>
           </ul>
         </nav>
         <Newsfeed />
         <br />
       </div>
     );
+  }
+  searchArt() {
+    if (this.word != null) {
+      history.push('/search/' + this.word);
+    } else {
+      Alert.danger('Insert search value');
+    }
   }
 }
 
@@ -106,18 +136,20 @@ export class Foot extends Component {
     return (
       <div>
         <div className="footer">
-          <h4>Contacts: </h4>
-          <ul>
-            <li>Creator: Helene Jonson</li>
-            <li>
-              E-mail:
-              <a className="myLink" href="mailto:heleneyj@stud.ntnu.no?Subject=Hello%20again" target="_top">
-                {' '}
-                heleneyj@stud.ntnu.no
-              </a>{' '}
-            </li>
-          </ul>
-          <p>© 2019 Geek News</p>
+          <div className="footer-text">
+            <h4>Contacts: </h4>
+            <ul>
+              <li>Creator: Helene Jonson</li>
+              <li>
+                E-mail:
+                <a className="myLink" href="mailto:heleneyj@stud.ntnu.no?Subject=Hello%20again" target="_top">
+                  {' '}
+                  heleneyj@stud.ntnu.no
+                </a>{' '}
+              </li>
+            </ul>
+            <p>© 2019 Geek News</p>
+          </div>
         </div>
       </div>
     );
@@ -135,11 +167,12 @@ if (root)
         <Route exact path="/NewArticle" component={ArticleEditor} />
         <Route exact path="/Article/:id" component={Read} />
         <Route exact path="/Article/:id/update" component={UpdateArticle} />
-        <Route exact path="/search" component={AdvancedSearch2} />
+        <Route exact path="/search" component={AdvSearch} />
         <Route exact path="/logIn" component={logIn} />
         <Route exact path="/Register" component={Register} />
         <Route exact path="/category/:name" component={CategoryArt} />
         <Route exact path="/New" component={New} />
+        <Route exact path="/search/:word" component={Search} />
         <Foot />
       </HashRouter>
     </div>,

@@ -7,8 +7,8 @@ img {
     display: grid;
     grid-template-areas:
             'adv . ';
-    grid-template-columns: 20% 80%;
-    padding: 40px;
+    grid-template-columns: 5% 95%;
+    padding: 0 10px 0 10px;
 }
 
 .footer {
@@ -23,8 +23,16 @@ img {
 .footer li{
     list-style-type: none;
 }
+
+.footer-text{
+    padding: 50px;
+}
 body{
     height: 100%;
+}
+
+.card-columns{
+    padding: 30px;
 }
 
 .advancedSearch {
@@ -45,11 +53,12 @@ body{
     height: 100%;
 }
 
+{/*navbar*/}
+
 .myList:hover{
     color: white;
     background-color: white;
 }
-
 
 nav li a:hover {
     background-color: white;
@@ -118,11 +127,9 @@ text-align: right;
 
 {/*New Article*/}
 
-
 .importance{
     padding: 20px;
 }
-
 
 {/*NewsBar*/}
 @keyframes ticker {
@@ -186,4 +193,16 @@ text-align: right;
     padding: 5px;
     border-style: solid;
 }
+
+.up {
+    position: fixed;
+    bottom: 20px;
+    border-color: black;
+
+
+}
+
+
+
+
 

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import {Component} from "react-simplified";
 import {ArticleCard, Card, imag} from "./Card";
-import { AdvancedSearch, Alert } from './widgets';
+import { AdvancedSearch, Up, Alert } from './widgets';
 import {Article} from "./Article";
 import {databaseService} from "./DatabaseService";
 
@@ -37,7 +37,7 @@ export class New extends Component {
            return (
              <div>
                <div className=" grid-container">
-                 <AdvancedSearch />
+                 <Up/>
                  <div className="card-columns">
                    {articles.map(a => (
                      <ArticleCard art={a} />

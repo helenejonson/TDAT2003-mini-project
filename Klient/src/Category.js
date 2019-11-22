@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { Component, sharedComponentData } from 'react-simplified';
-import { AdvancedSearch } from './widgets';
+import { AdvancedSearch, Up } from './widgets';
 import { ArticleCard } from './Card';
 import { Article } from './Article';
 import { databaseService } from './DatabaseService';
@@ -73,7 +73,7 @@ export class CategoryArt extends Component<{ match: { params: { name: string } }
         <h1 className="categoryTitle">{this.props.match.params.name}</h1>
         <h4 className="categoryTitle">{this.desc}</h4>
         <div className=" grid-container">
-          <AdvancedSearch />
+          <Up />
           <div className="card-columns">
             {articles.map(a => (
               <ArticleCard art={a} />
