@@ -290,6 +290,6 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
 
   handleUpdate() {
     console.log(this.article);
-    databaseService.updateArticle(this.article).catch(e => console.error(e));
+    databaseService.updateArticle(this.article).then(history.push('/category/' + this.article.category)).catch(e => console.error(e));
   }
 }
