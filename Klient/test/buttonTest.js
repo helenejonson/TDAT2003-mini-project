@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { AdvSearch } from '../src/search';
+import { AdvSearch } from '../src/advSearch';
 import { shallow, mount } from 'enzyme';
 
 describe('Button test', () => {

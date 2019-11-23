@@ -7,7 +7,7 @@ import { HashRouter, Route, NavLink } from 'react-router-dom';
 import { Home } from './frontPage.js';
 import { Read } from './read.js';
 import { ArticleEditor } from './ArticleEditor.js';
-import { AdvSearch } from './search';
+import { AdvSearch } from './advSearch';
 import { logIn } from './logIn';
 import { Register } from './logIn';
 import { categoryList, f } from './Category';

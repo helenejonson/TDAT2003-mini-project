@@ -55,6 +55,7 @@ export class Search extends Component<{ match: { params: { word: string } } }> {
   }
 }
 
+/*
 export class AdvSearch extends Component {
   // to make flow shut up
   blabla: { style: CSSStyleDeclaration } = {};
@@ -92,6 +93,8 @@ export class AdvSearch extends Component {
     }
   }
 }
+
+ */
 
 export class AdvancedSearch extends Component {
   // to make flow shut up
