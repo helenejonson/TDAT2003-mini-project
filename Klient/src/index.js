@@ -86,7 +86,7 @@ export class Menu extends Component {
                     <NavLink
                       class="myList"
                       style={{ color: 'black' }}
-                      activeStyle={{ color: 'white' }}
+                      activeStyle={{ color: 'gray' }}
                       to={'/category/' + e.name}
                     >
                       {e.name}

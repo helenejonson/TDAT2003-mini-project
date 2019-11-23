@@ -43,4 +43,3 @@ export class Article {
     this.dislikes = dislikes;
   }
 }
-

@@ -1,0 +1,10 @@
+<div>
+               <div className=" grid-container">
+                 <Up/>
+                 <div className="card-columns">
+                   {articles.map(a => (
+                     <ArticleCard art={a} />
+                   ))}
+                 </div>
+               </div>
+             </div>

@@ -1,10 +1,10 @@
 // @flow
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { ArticleCard, Card, imag } from './Card';
-import { AdvancedSearch, Up, Alert } from './widgets';
+import { Alert } from './widgets';
 import { Article } from './Article';
 import { databaseService } from './DatabaseService';
+import { ArticleDispay} from './articleDispay';
 
 export class Home extends Component {
   articles: Article[] = [];
@@ -35,14 +35,7 @@ export class Home extends Component {
     }
     return (
       <div>
-        <div className=" grid-container">
-          <Up />
-          <div className="card-columns">
-            {articles.map(a => (
-              <ArticleCard art={a} />
-            ))}
-          </div>
-        </div>
+        <ArticleDispay art={this.articles} />
       </div>
     );
   }
