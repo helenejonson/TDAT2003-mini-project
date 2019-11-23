@@ -11,7 +11,7 @@ describe('Button test', () => {
   const wrapper = shallow(<AdvSearch />);
 
   it('clicking button', () => {
-    wrapper.find('button.close').simulate('click');
+    wrapper.find('button.btn').simulate('click');
 
     let instance = AdvSearch.instance();
     expect(typeof instance).toEqual('object');
