@@ -13,7 +13,7 @@ describe('Button test', () => {
 
     let instance = Up.instance();
     expect(typeof instance).toEqual('object');
-    if (instance) expectexpect(toTop).toBeCalled();
+    if (instance) expect(toTop).toBeCalled();
 
   });
 });
