@@ -289,7 +289,23 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
   }
 
   handleUpdate() {
-    console.log(this.article);
-    databaseService.updateArticle(this.article).then(history.push('/category/' + this.article.category)).catch(e => console.error(e));
+    if (
+      this.article.title === null ||
+      this.article.picturePath === null ||
+      this.article.pictureAlt === null ||
+      this.article.pictureCapt === null ||
+      this.article.text === null ||
+      this.article.author === null ||
+      this.article.category === null
+    ) {
+      Alert.danger('You need to fill out the entire article');
+      console.log(this.article);
+      document.documentElement.scrollTop = 0;
+    }else{
+      databaseService.updateArticle(this.article).catch(e => console.error(e));
+      Alert.success('Article was successfully updated');
+      history.push('/category/' + this.article.category)
+    }
+
   }
 }

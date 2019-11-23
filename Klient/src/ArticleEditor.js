@@ -275,6 +275,7 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
     } else {
       console.log(this.article);
       databaseService.addArticle(this.article).catch(e => console.error(e));
+      Alert.success('Article was successfully posted');
       history.push("/");
     }
   }
