@@ -5,7 +5,7 @@ import { Component } from 'react-simplified';
 import { categoryList } from './Category';
 import { createHashHistory } from 'history';
 
-var categories = categoryList.categories.map(e => e.name);
+//var categories = categoryList.categories.map(e => e.name);
 const history = createHashHistory();
 
 export class Up extends Component {

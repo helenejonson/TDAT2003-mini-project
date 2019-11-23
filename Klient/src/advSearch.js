@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
-
 import { Alert } from './widgets';
-
 import { createHashHistory } from 'history';
 import 'easymde/dist/easymde.min.css';
 

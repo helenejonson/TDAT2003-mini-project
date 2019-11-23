@@ -2,18 +2,18 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { AdvSearch } from '../src/advSearch';
+import {Up} from '../src/widgets';
 import { shallow, mount } from 'enzyme';
 
 describe('Button test', () => {
-  const wrapper = shallow(<AdvSearch word="me" />);
+  const wrapper = shallow(<Up />);
 
   it('clicking button', () => {
-    wrapper.find('button.btn').simulate('click');
+    wrapper.find('button.up').simulate('click');
 
-    let instance = AdvSearch.instance();
+    let instance = Up.instance();
     expect(typeof instance).toEqual('object');
-    if (instance) expectexpect(searchArt).toBeCalled();
+    if (instance) expectexpect(toTop).toBeCalled();
 
   });
 });
