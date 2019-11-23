@@ -39,7 +39,10 @@ module.exports = class ArticleDao extends Dao {
     super.query('Delete from annonse where id = ?;', [id], callback);
   }
 
-  createArticle({ title, picturePath, pictureAlt, pictureCapt, text, author, category, importance } : article, callback) {
+  createArticle(
+    { title, picturePath, pictureAlt, pictureCapt, text, author, category, importance }: article,
+    callback
+  ) {
     var val = [title, picturePath, pictureAlt, pictureCapt, text, author, category, importance];
     super.query(
       'insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author, category, importance) values (?,?,?,?,?,?,?,?)',
@@ -48,7 +51,10 @@ module.exports = class ArticleDao extends Dao {
     );
   }
 
-  updateArticle({ title, picturePath, pictureAlt, pictureCapt, text, author, category, importance, id } : article & {id:number}, callback) {
+  updateArticle(
+    { title, picturePath, pictureAlt, pictureCapt, text, author, category, importance, id }: article & { id: number },
+    callback
+  ) {
     var val = [title, picturePath, pictureAlt, pictureCapt, text, author, category, importance, id];
     super.query(
       'UPDATE annonse SET title = ?, picturePath = ?, pictureAlt = ?, pictureCapt = ?, text = ?,author = ?, category = ?, importance = ? where id = ?',

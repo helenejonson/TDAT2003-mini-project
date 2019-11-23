@@ -4,7 +4,7 @@ import { Component } from 'react-simplified';
 import { Alert } from './widgets';
 import { Article } from './Article';
 import { databaseService } from './DatabaseService';
-import { ArticleDispay} from './articleDispay';
+import { ArticleDispay } from './articleDispay';
 
 export class Home extends Component {
   articles: Article[] = [];

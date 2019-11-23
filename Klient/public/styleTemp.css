@@ -198,8 +198,10 @@ text-align: right;
     position: fixed;
     bottom: 20px;
     border-color: black;
+}
 
-
+.imgCard{
+    padding: 5px;
 }
 
 

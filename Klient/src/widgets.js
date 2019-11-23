@@ -8,7 +8,6 @@ import { createHashHistory } from 'history';
 var categories = categoryList.categories.map(e => e.name);
 const history = createHashHistory();
 
-
 export class Up extends Component {
   render() {
     return (

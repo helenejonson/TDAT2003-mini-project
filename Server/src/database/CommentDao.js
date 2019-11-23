@@ -7,7 +7,7 @@ module.exports = class CommentDao extends Dao {
     super.query('Select * from comments where articleId = ? order by date DESC', [articleId], callback);
   }
 
-  createComment({ articleId, username, text } : comment, callback) {
+  createComment({ articleId, username, text }: comment, callback) {
     var val = [articleId, username, text];
     super.query('insert into comments (articleId, username, text) values (?,?,?)', val, callback);
   }
