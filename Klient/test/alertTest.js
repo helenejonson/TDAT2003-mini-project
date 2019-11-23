@@ -32,12 +32,12 @@ describe('Alert tests', () => {
   });
 
   it('after clicking close button', () => {
-    wrapper.find('button.close').simulate('click');
+    wrapper.find('button.btn').simulate('click');
 
     let instance = Alert.instance();
     expect(typeof instance).toEqual('object');
     if (instance) expect(instance.alerts).toEqual([]);
 
-    expect(wrapper.find('button.close')).toHaveLength(0);
+    expect(wrapper.find('button.btn')).toHaveLength(0);
   });
 });

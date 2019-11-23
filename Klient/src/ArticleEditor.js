@@ -9,26 +9,14 @@ import { Category, categoryList } from './Category';
 import { databaseService } from './DatabaseService';
 import { createHashHistory } from 'history';
 import MarkdownRenderer from 'react-markdown-renderer';
+import { Alert } from './widgets';
 
 const history = createHashHistory();
 
 var categories: Category[] = categoryList.categories;
 
 export class ArticleEditor extends Component<{ match: { params: { id: number } } }> {
-  article: Article = new Article(
-    0,
-    'Title',
-    'img/logo.png',
-    'an eagle',
-    'lol',
-    '',
-    new Date(),
-    'somebody',
-    'D&D',
-    2,
-    0,
-    0
-  );
+  article: Article = new Article(0, null, null, null, null, null, new Date(), null, null, 2, 0, 0);
 
   render() {
     return (
@@ -272,7 +260,22 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
   }
 
   handleUpload() {
-    console.log(this.article);
-    databaseService.addArticle(this.article).catch(e => console.error(e));
+    if (
+      this.article.title === null ||
+      this.article.picturePath === null ||
+      this.article.pictureAlt === null ||
+      this.article.pictureCapt === null ||
+      this.article.text === null ||
+      this.article.author === null ||
+      this.article.category === null
+    ) {
+      Alert.danger('You need to fill out the entire article');
+      console.log(this.article);
+      document.documentElement.scrollTop = 0;
+    } else {
+      console.log(this.article);
+      databaseService.addArticle(this.article).catch(e => console.error(e));
+      history.push("/");
+    }
   }
 }
