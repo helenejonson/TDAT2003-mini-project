@@ -12,7 +12,7 @@ describe('Button test', () => {
     let instance = wrapper.instance();
     expect(typeof instance).toEqual('object');
     const toTopSpy = jest.spyOn(instance, 'toTop').mockImplementation(() => null);
-    wrapper.find('button.up').simulate('click');
+    wrapper.find('button.btn btn-info up').simulate('click');
 
     if (instance) expect(toTopSpy).toHaveBeenCalled();
 
