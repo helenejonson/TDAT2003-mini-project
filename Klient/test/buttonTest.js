@@ -10,10 +10,10 @@ describe('Button test', () => {
 
   it('clicking button', () => {
     let instance = Up.instance();
+    expect(typeof instance).toEqual('object');
     const toTopSpy = jest.spyOn(instance, 'toTop');
     wrapper.find('button.up').simulate('click');
 
-    expect(typeof instance).toEqual('object');
     if (instance) expect(toTopSpy).toHaveBeenCalled();
 
   });
