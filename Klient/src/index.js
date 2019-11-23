@@ -43,18 +43,18 @@ export class Menu extends Component {
           <a className="navbar-brand" href="#">
             <img src="img/logo-small.png" alt="Home" />{' '}
           </a>
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand home" href="#">
             Home{' '}
           </a>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink className="nav-link" style={{ color: 'red' }} activeStyle={{ color: 'darkgray' }} to="/New">
+              <NavLink className="nav-link new" style={{ color: 'red' }} activeStyle={{ color: 'darkgray' }} to="/New">
                 New
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink
-                className="nav-link"
+                className="nav-link new_art"
                 style={{ color: 'red' }}
                 activeStyle={{ color: 'darkgray' }}
                 to="/NewArticle"
@@ -63,7 +63,7 @@ export class Menu extends Component {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" style={{ color: 'red' }} activeStyle={{ color: 'darkgray' }} to="/search">
+              <NavLink className="nav-link adv_search" style={{ color: 'red' }} activeStyle={{ color: 'darkgray' }} to="/search">
                 Advanced search
               </NavLink>
             </li>
