@@ -9,7 +9,7 @@ describe('Button test', () => {
   const wrapper = shallow(<Up />);
 
   it('clicking button', () => {
-    let instance = Up.instance();
+    let instance = wrapper.instance();
     expect(typeof instance).toEqual('object');
     const toTopSpy = jest.spyOn(instance, 'toTop');
     wrapper.find('button.up').simulate('click');
