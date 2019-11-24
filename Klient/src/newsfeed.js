@@ -1,4 +1,5 @@
 // @flow
+
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { Article } from './article';
@@ -27,7 +28,7 @@ export class Newsfeed extends Component {
                 <div className="ticker-move">
                   {articles.map(e => (
                     <a className="newsBar" href={'#/Article/' + e.id}>
-                      {e.title} / {e.date.toLocaleTimeString()}
+                      {e.title} / {e.date.toDateString()} {e.date.getHours()}:{e.date.getMinutes()}
                     </a>
                   ))}
                 </div>

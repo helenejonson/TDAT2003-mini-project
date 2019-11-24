@@ -15,7 +15,7 @@ const history = createHashHistory();
 
 var categories: Category[] = categoryList.categories;
 
-export class ArticleEditor extends Component<{ match: { params: { id: number } } }> {
+export class CreateArticle extends Component<{ match: { params: { id: number } } }> {
   article: Article = new Article(0, null, null, null, null, null, new Date(), null, null, 2, 0, 0);
 
   render() {
@@ -83,7 +83,7 @@ export class ArticleEditor extends Component<{ match: { params: { id: number } }
                     aria-describedby="imgPathHelp"
                   />
                   <small id="imgCaptHelp" className="form-text text-muted">
-                    Please provide a caption for your image, containing further details
+                    Please insert link for your picture
                   </small>
                 </div>
               </div>

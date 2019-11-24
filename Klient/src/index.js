@@ -6,7 +6,7 @@ import { Component } from 'react-simplified';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
 import { Home } from './frontPage.js';
 import { Read } from './read.js';
-import { ArticleEditor } from './ArticleEditor.js';
+import { CreateArticle } from './createArticle.js';
 import { AdvSearch } from './advSearch';
 import { logIn } from './logIn';
 import { Register } from './logIn';
@@ -164,7 +164,7 @@ if (root)
         <Menu />
         <Alert />
         <Route exact path="/" component={Home} />
-        <Route exact path="/NewArticle" component={ArticleEditor} />
+        <Route exact path="/NewArticle" component={CreateArticle} />
         <Route exact path="/Article/:id" component={Read} />
         <Route exact path="/Article/:id/update" component={UpdateArticle} />
         <Route exact path="/search" component={AdvSearch} />

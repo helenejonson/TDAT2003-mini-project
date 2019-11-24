@@ -2,11 +2,7 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { categoryList } from './category';
 import { createHashHistory } from 'history';
-
-//var categories = categoryList.categories.map(e => e.name);
-const history = createHashHistory();
 
 export class Up extends Component {
   render() {
@@ -76,5 +72,3 @@ export class Alert extends Component {
     });
   }
 }
-
-function searchFunk() {}

@@ -6,6 +6,7 @@ import 'easymde/dist/easymde.min.css';
 
 const history = createHashHistory();
 
+//Search method
 export class AdvSearch extends Component {
   // to make flow shut up
   blabla: { style: CSSStyleDeclaration } = {};

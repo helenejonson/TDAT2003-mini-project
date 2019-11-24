@@ -1,4 +1,5 @@
 // @flow
+
 import * as React from 'react';
 import { Component, sharedComponentData } from 'react-simplified';
 import { Article } from './article';
@@ -16,13 +17,7 @@ export class Category {
     this.desc = desc;
   }
 }
-/*
-new Category(1,'Movies', 'Blockbusters and staight to DVD. We cover all'),
-    new Category(2,'Books', 'Read your way to a new favourite'),
-    new Category(3,'MTG', 'All new card, lore and how-to'),
-    new Category(4,'D&D', 'We play dugeons and dragons!!!'),
-    new Category(5,'Anime', 'Kawaii'),
- */
+
 export let categoryList = sharedComponentData({
   categories: [
     new Category(1, 'Movies', 'Blockbusters and staight to DVD. We cover all'),
@@ -30,7 +25,6 @@ export let categoryList = sharedComponentData({
     new Category(3, 'MTG', 'All new card, lore and how-to')
   ]
 });
-//console.log(categoryList);
 
 export function f() {
   return databaseService

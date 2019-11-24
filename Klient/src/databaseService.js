@@ -7,21 +7,7 @@ import { Comment } from './comments';
 import { Category } from './category';
 
 class DatabaseService {
-  /*
-    getImpArticles() {
-        return new Promise((resolve, reject) => {
-            axios.get<Article[]>('http://localhost:8080/annonse/viktig')
-                .then(response => {
 
-                    resolve(response.data.map(a =>
-                        new Article(a.id, a.title, a.picturePath, a.pictureAlt, a.pictureCapt, a.text, new Date(Date.parse(a.date)), a.author, a.category, a.importance, a.likes, a.dislikes)));
-
-                })
-                .catch(error => reject(error));
-        });
-    }
-
-     */
   getImpArticles() {
     return axios
       .get<Article[]>('http://localhost:8080/annonse/viktig')
@@ -52,6 +38,7 @@ class DatabaseService {
       })
       .catch(error => console.log(error));
   }
+
   getNewsfeed() {
     return axios
       .get<Article[]>('http://localhost:8080/annonse/newsfeed')

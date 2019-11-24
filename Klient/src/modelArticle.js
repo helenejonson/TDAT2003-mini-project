@@ -6,7 +6,6 @@ import { Component } from 'react-simplified';
 import MarkdownRenderer from 'react-markdown-renderer';
 import { databaseService } from './databaseService';
 import { Comments } from './comments';
-import { Delete } from './delete';
 
 export class ModelArticle extends Component<{ art: Article }> {
   render() {

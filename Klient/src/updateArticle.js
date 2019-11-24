@@ -8,8 +8,8 @@ import SimpleMDE from 'react-simplemde-editor';
 import { createHashHistory } from 'history';
 import { Category, categoryList } from './category';
 
-const history = createHashHistory();
 
+const history = createHashHistory();
 var categories: Category[] = categoryList.categories;
 
 export class UpdateArticle extends Component<{ match: { params: { id: number } } }> {
@@ -98,7 +98,7 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
                         aria-describedby="imgPathHelp"
                       />
                       <small id="imgCaptHelp" className="form-text text-muted">
-                        Please provide a caption for your image, containing further details
+                        Please insert link for your picture
                       </small>
                     </div>
                   </div>
@@ -256,10 +256,10 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
                     </div>
                   </div>
                 </div>
-                <button type="submit" className="btn btn-primary" onClick={this.handleUpdate}>
-                  Update
-                </button>
               </form>
+              <button type="submit" className="btn btn-primary" onClick={this.handleUpdate}>
+                Update
+              </button>
             </div>
           </div>
         </div>
@@ -272,6 +272,7 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
       );
     }
   }
+
 
   setImportance() {
     var x = document.getElementById('inlineCheckbox1').checked;
@@ -301,11 +302,10 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
       Alert.danger('You need to fill out the entire article');
       console.log(this.article);
       document.documentElement.scrollTop = 0;
-    }else{
+    } else {
       databaseService.updateArticle(this.article).catch(e => console.error(e));
       Alert.success('Article was successfully updated');
-      history.push('/category/' + this.article.category)
+      history.push('/category/' + this.article.category);
     }
-
   }
 }

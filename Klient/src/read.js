@@ -49,7 +49,7 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
               <br />
               <small> Category: {article.category}</small>
               <br />
-              <small> Published: {article.date.toLocaleString()}</small>
+              <small> Published: {article.date.toDateString()} {article.date.getHours()}:{article.date.getMinutes()}</small>
             </div>
             <br />
             <div className="rating">
