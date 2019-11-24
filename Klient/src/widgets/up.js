@@ -15,6 +15,7 @@ export class Up extends Component {
   }
 
   toTop() {
+    console.log("see me");
     document.documentElement.scrollTop = 0;
   }
 }

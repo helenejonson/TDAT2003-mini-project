@@ -12,19 +12,16 @@ describe('Button test', () => {
     let instance = wrapper.instance();
     expect(typeof instance).toEqual('object');
   });
-  
-  /*
-  it('button click test', () => {
-    let instance = wrapper.instance();
-    const submitSpy = jest.spyOn(instance, 'toTop').mockImplementation(() => null);
-    expect(submitSpy).not.toHaveBeenCalled();
 
-    expect(submitSpy).not.toHaveBeenCalled();
+/*
+  it('button click test', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'toTop');
+    expect(spy).not.toHaveBeenCalled();
     wrapper.find('button').simulate('click');
     console.log(wrapper.find('button.up').debug());
-    expect(submitSpy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
   });
-  */
+*/
 
   it('renders correctly', () => {
     expect(wrapper.debug()).toMatchSnapshot();
