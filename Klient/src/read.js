@@ -1,11 +1,11 @@
 // @flow
 
-import { Article } from './Article';
+import { Article } from './article';
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import MarkdownRenderer from 'react-markdown-renderer';
-import { databaseService } from './DatabaseService';
-import { Comments } from './Comments';
+import { databaseService } from './databaseService';
+import { Comments } from './comments';
 import { Delete } from './delete';
 import { Alert } from './widgets';
 import { createHashHistory } from 'history';

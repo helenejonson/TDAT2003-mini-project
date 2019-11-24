@@ -2,10 +2,10 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { Article } from './Article';
-import { databaseService } from './DatabaseService';
+import { Article } from './article';
+import { databaseService } from './databaseService';
 import { Alert } from './widgets';
-import { ArticleCard } from './Card';
+import { ArticleCard } from './card';
 import { createHashHistory } from 'history';
 import 'easymde/dist/easymde.min.css';
 

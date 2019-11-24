@@ -1,7 +1,7 @@
 // @flow
 var mysql = require("mysql");
 
-const ArticleDao = require("../database/ArticleDao.js");
+const ArticleDao = require("../database/articleDao.js");
 const runsqlfile = require("./runsqlfile");
 
 /*

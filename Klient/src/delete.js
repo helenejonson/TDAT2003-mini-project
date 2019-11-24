@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { databaseService } from './DatabaseService';
+import { databaseService } from './databaseService';
 import { createHashHistory } from 'history';
 
 const history = createHashHistory();

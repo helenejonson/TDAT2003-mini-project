@@ -1,5 +1,5 @@
 // @flow
-const Dao = require('./Dao');
+const Dao = require('./dao');
 type article = {
   title: string,
   picturePath: string,

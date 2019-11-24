@@ -1,5 +1,5 @@
 // @flow
-const Dao = require('./Dao');
+const Dao = require('./dao');
 type comment = { articleId: number, username: string, text: string };
 
 module.exports = class CommentDao extends Dao {

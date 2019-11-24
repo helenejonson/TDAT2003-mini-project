@@ -6,13 +6,13 @@ import { Up } from '../src/widgets';
 import { shallow, mount } from 'enzyme';
 
 describe('Button test', () => {
-  const wrapper = shallow(<Up />);
+  const wrapper = shallow(<Up/>);
 
   it('clicking button', () => {
     //let instance = wrapper.instance();
 
     const toTopSpy = jest.spyOn(wrapper.instance(), 'toTop').mockImplementation(() => null);
-    wrapper.find('button').simulate('click');
+    wrapper.find('Button').prop('onClick')();
     console.log(wrapper.find('button.up').debug());
 
     expect(toTopSpy).toHaveBeenCalled();

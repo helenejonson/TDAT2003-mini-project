@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { databaseService } from './DatabaseService';
+import { databaseService } from './databaseService';
 import axios from 'axios';
-import { Article } from './Article';
+import { Article } from './article';
 
 export class Comment {
   commentId: number;

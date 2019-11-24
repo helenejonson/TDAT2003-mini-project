@@ -1,7 +1,7 @@
 // @flow
-const ArticleDao = require('./ArticleDao');
-const CommentDao = require('./CommentDao');
-const CategoryDao = require('./CategoryDao');
+const ArticleDao = require('./articleDao');
+const CommentDao = require('./commentDao');
+const CategoryDao = require('./categoryDao');
 var express = require('express');
 var mysql = require('mysql');
 var app = express();

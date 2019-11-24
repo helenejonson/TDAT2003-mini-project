@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
 import { Component, sharedComponentData } from 'react-simplified';
-import { Article } from './Article';
-import { databaseService } from './DatabaseService';
+import { Article } from './article';
+import { databaseService } from './databaseService';
 import { ArticleDispay } from './articleDispay';
 
 export class Category {

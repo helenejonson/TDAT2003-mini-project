@@ -1,5 +1,5 @@
 // @flow
-const Dao = require('./Dao');
+const Dao = require('./dao');
 
 module.exports = class CategoryDao extends Dao {
   getCategories(callback) {

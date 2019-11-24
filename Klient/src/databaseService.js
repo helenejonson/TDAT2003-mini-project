@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import axios from 'axios';
-import { Article } from './Article';
-import { Comment } from './Comments';
-import { Category } from './Category';
+import { Article } from './article';
+import { Comment } from './comments';
+import { Category } from './category';
 
 class DatabaseService {
   /*

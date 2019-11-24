@@ -1,12 +1,12 @@
-import { Article } from './Article';
+import { Article } from './article';
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import MarkdownRenderer from 'react-markdown-renderer';
-import { databaseService } from './DatabaseService';
+import { databaseService } from './databaseService';
 import { Alert } from './widgets';
 import SimpleMDE from 'react-simplemde-editor';
 import { createHashHistory } from 'history';
-import { Category, categoryList } from './Category';
+import { Category, categoryList } from './category';
 
 const history = createHashHistory();
 
