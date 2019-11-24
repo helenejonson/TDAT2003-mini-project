@@ -83,7 +83,7 @@ export class Comments extends Component<{ id: number }> {
                 <div className="comments-box">
                   <h5>{e.username}</h5>
                   <p>{e.text}</p>
-                  <small>{e.date.toLocaleString()}</small>
+                  <small>{e.date.toDateString()} {e.date.getHours()}:{(e.date.getMinutes()<10?'0':'') + e.date.getMinutes()}</small>
                 </div>
               ))
             : null}

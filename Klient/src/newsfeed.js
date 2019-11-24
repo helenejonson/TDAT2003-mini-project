@@ -28,7 +28,7 @@ export class Newsfeed extends Component {
                 <div className="ticker-move">
                   {articles.map(e => (
                     <a className="newsBar" href={'#/Article/' + e.id}>
-                      {e.title} / {e.date.toDateString()} {e.date.getHours()}:{e.date.getMinutes()}
+                      {e.title} / {e.date.toDateString()} {e.date.getHours()}:{(e.date.getMinutes()<10?'0':'') + e.date.getMinutes()}
                     </a>
                   ))}
                 </div>

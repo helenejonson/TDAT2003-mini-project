@@ -4,7 +4,7 @@ type comment = { articleId: number, username: string, text: string };
 
 module.exports = class CommentDao extends Dao {
   getComments(articleId: number, callback) {
-    super.query('Select * from comments where articleId = ? order by date DESC', [articleId], callback);
+    super.query('Select * from comments where articleId = ? order by date ASC', [articleId], callback);
   }
 
   createComment({ articleId, username, text }: comment, callback) {

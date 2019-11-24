@@ -17,7 +17,7 @@ const history = createHashHistory();
 var categories: Category[] = categoryList.categories;
 
 export class CreateArticle extends Component<{ match: { params: { id: number } } }> {
-  article: Article = new Article(0, null, null, null, null, null, new Date(), null, null, 2, 0, 0);
+  article: Article = new Article(0, null, "img/logo.png", null, null, null, new Date(), null, null, 2, 0, 0);
 
   render() {
     return (

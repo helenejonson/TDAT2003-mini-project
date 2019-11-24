@@ -49,7 +49,7 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
               <br />
               <small> Category: {article.category}</small>
               <br />
-              <small> Published: {article.date.toDateString()} {article.date.getHours()}:{article.date.getMinutes()}</small>
+              <small> Published: {article.date.toDateString()} {article.date.getHours()}:{(article.date.getMinutes()<10?'0':'') + article.date.getMinutes()}</small>
             </div>
             <br />
             <div className="rating">
@@ -68,7 +68,7 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
 
             <Delete id={this.props.match.params.id} />
 
-            <button type="button" className="btn btn-primary" onClick={this.pushUpdate}>
+            <button type="button" className="btn btn-dark" onClick={this.pushUpdate}>
               Update
             </button>
           </div>
