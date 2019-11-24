@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { Component, sharedComponentData } from 'react-simplified';
-import { Article } from './article';
-import { databaseService } from './databaseService';
-import { ArticleDispay } from './articleDispay';
+import { Article } from '../methods/article';
+import { databaseService } from '../databaseService';
+import { ArticleDispay } from '../methods/articleDispay';
 
 export class Category {
   categoryId: number;

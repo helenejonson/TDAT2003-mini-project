@@ -1,12 +1,13 @@
+// @flow
+
 import { Article } from './article';
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import MarkdownRenderer from 'react-markdown-renderer';
-import { databaseService } from './databaseService';
-import { Alert } from './widgets/Alert';
+import { databaseService } from '../databaseService';
+import { Alert } from '../widgets/Alert';
 import SimpleMDE from 'react-simplemde-editor';
 import { createHashHistory } from 'history';
-import { Category, categoryList } from './category';
+import { Category, categoryList } from '../mainpages/category';
 import { Preview } from './preview';
 
 const history = createHashHistory();
@@ -82,7 +83,7 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
                       </label>
                     </div>
                   </div>
-                  <br/>
+                  <br />
                   <div className="row">
                     <label htmlFor="imgPath" className="col col-form-label">
                       Image path from web
@@ -103,13 +104,12 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
                       </small>
                     </div>
                   </div>
-                  <br/>
+                  <br />
                   {/*====== image preview ======*/}
                   <div className="card align-items-center p-3 text-center">
                     <img src={this.article.picturePath} className="card-img w-25" alt="[ Preview ]" />
                   </div>
-                  <p></p>
-                  {/* shitty hack */}
+                  <br />
                   <div className="row">
                     <label htmlFor="imgAlt" className="col col-form-label">
                       Alt-Text
@@ -131,8 +131,7 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
                       </small>
                     </div>
                   </div>
-                  <p></p>
-                  {/* shitty hack */}
+                  <br />
                   <div className="row">
                     <label htmlFor="imgCapt" className="col col-form-label">
                       Image Caption
@@ -217,7 +216,7 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
                   </div>
                 </div>
                 <br />
-               <Preview art = {this.article}/>
+                <Preview art={this.article} />
               </form>
               <button type="submit" className="btn btn-primary" onClick={this.handleUpdate}>
                 Update
@@ -234,7 +233,6 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
       );
     }
   }
-
 
   setImportance() {
     var x = document.getElementById('inlineCheckbox1').checked;

@@ -1,3 +1,5 @@
+// @flow
+
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { Alert } from './Alert';
@@ -17,7 +19,7 @@ export class AdvSearch extends Component {
       <div>
         <div className="advancedSearch" ref={e => (this.blabla = e)}>
           <h3>Search</h3>
-          <br/>
+          <br />
           <div className="form-group">
             <input
               id="title"
@@ -28,7 +30,7 @@ export class AdvSearch extends Component {
               onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.word = event.target.value)}
             />
           </div>
-          <br/>
+          <br />
           <button type="button" onClick={this.searchArt} className="btn btn-info search">
             Search
           </button>

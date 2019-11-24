@@ -4,19 +4,19 @@ import ReactDOM from 'react-dom';
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { HashRouter, Route, NavLink } from 'react-router-dom';
-import { Home } from './frontPage.js';
-import { Read } from './read.js';
-import { CreateArticle } from './createArticle.js';
+import { Home } from './mainpages/frontPage.js';
+import { Read } from './mainpages/read.js';
+import { CreateArticle } from './mainpages/createArticle.js';
 import { AdvSearch } from './widgets/advSearch';
-import { logIn } from './logIn';
-import { Register } from './logIn';
-import { categoryList, f } from './category';
-import { CategoryArt } from './category';
-import { Newsfeed } from './newsfeed';
-import { All } from './all';
+import { logIn } from './mainpages/logIn';
+import { Register } from './mainpages/logIn';
+import { categoryList, f } from './mainpages/category';
+import { CategoryArt } from './mainpages/category';
+import { Newsfeed } from './widgets/newsfeed';
+import { All } from './mainpages/all';
 import { Alert } from './widgets/Alert';
-import { UpdateArticle } from './updateArticle';
-import { Search } from './search';
+import { UpdateArticle } from './methods/updateArticle';
+import { Search } from './mainpages/search';
 import { createHashHistory } from 'history';
 import { SearchBar } from './widgets/searchBar';
 
@@ -114,7 +114,7 @@ export class Menu extends Component {
           </ul>
         </nav>
         <Newsfeed />
-        <br/>
+        <br />
       </div>
     );
   }
@@ -126,7 +126,6 @@ export class Foot extends Component {
       <div>
         <div className="footer">
           <div className="footer-text">
-            
             <h4>Contacts: </h4>
             <ul>
               <li>Creator: Helene Jonson</li>

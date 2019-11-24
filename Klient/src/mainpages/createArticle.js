@@ -4,20 +4,19 @@ import * as React from 'react';
 import { Component } from 'react-simplified';
 import SimpleMDE from 'react-simplemde-editor';
 import 'easymde/dist/easymde.min.css';
-import { Article } from './article';
+import { Article } from '../methods/article';
 import { Category, categoryList } from './category';
-import { databaseService } from './databaseService';
+import { databaseService } from '../databaseService';
 import { createHashHistory } from 'history';
-import MarkdownRenderer from 'react-markdown-renderer';
-import { Alert } from './widgets/Alert';
-import { Preview } from './preview';
+import { Alert } from '../widgets/Alert';
+import { Preview } from '../methods/preview';
 
 const history = createHashHistory();
 
 var categories: Category[] = categoryList.categories;
 
 export class CreateArticle extends Component<{ match: { params: { id: number } } }> {
-  article: Article = new Article(0, null, "img/logo.png", null, null, null, new Date(), null, null, 2, 0, 0);
+  article: Article = new Article(0, null, 'img/logo.png', null, null, null, new Date(), null, null, 2, 0, 0);
 
   render() {
     return (
@@ -68,7 +67,7 @@ export class CreateArticle extends Component<{ match: { params: { id: number } }
                   </label>
                 </div>
               </div>
-              <br/>
+              <br />
               <div className="row">
                 <label htmlFor="imgPath" className="col col-form-label">
                   Image path from web
@@ -90,7 +89,7 @@ export class CreateArticle extends Component<{ match: { params: { id: number } }
                   </small>
                 </div>
               </div>
-              <br/>
+              <br />
               {/*====== image preview ======*/}
               <div className="card align-items-center p-3 text-center">
                 <img src={this.article.picturePath} className="card-img w-25" alt="[ Preview ]" />
@@ -198,7 +197,7 @@ export class CreateArticle extends Component<{ match: { params: { id: number } }
               </div>
             </div>
             <br />
-            <Preview art = {this.article}/>
+            <Preview art={this.article} />
             <button type="submit" className="btn btn-primary" onClick={this.handleUpload}>
               Upload
             </button>
@@ -240,7 +239,7 @@ export class CreateArticle extends Component<{ match: { params: { id: number } }
       console.log(this.article);
       databaseService.addArticle(this.article).catch(e => console.error(e));
       Alert.success('Article was successfully posted');
-      history.push("/");
+      history.push('/');
     }
   }
 }

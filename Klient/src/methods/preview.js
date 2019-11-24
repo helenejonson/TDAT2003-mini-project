@@ -1,18 +1,16 @@
+// @flow
+
 import { Article } from './article';
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import MarkdownRenderer from 'react-markdown-renderer';
-import { databaseService } from './databaseService';
-import { Alert } from './widgets/Alert';
-import SimpleMDE from 'react-simplemde-editor';
 import { createHashHistory } from 'history';
-import { Category, categoryList } from './category';
 
 export class Preview extends Component<{ art: Article }> {
   article: Article = this.props.art;
-  
-  render(){
-    return(
+
+  render() {
+    return (
       <div>
         {/*The dropdown preview display*/}
         <div>
@@ -33,11 +31,7 @@ export class Preview extends Component<{ art: Article }> {
               <div className="mini-article">
                 <h4 className="articleTitle"> {this.article.title} </h4>
                 <figure>
-                  <img
-                    className="pictureSizePreview"
-                    src={this.article.picturePath}
-                    alt={this.article.pictureAlt}
-                  />
+                  <img className="pictureSizePreview" src={this.article.picturePath} alt={this.article.pictureAlt} />
                   <figcaption className="pictureCapt">{this.article.pictureCapt}</figcaption>
                 </figure>
                 <br />
@@ -48,7 +42,11 @@ export class Preview extends Component<{ art: Article }> {
                   <br />
                   <small> Category: {this.article.category}</small>
                   <br />
-                  <small> Published: {this.article.date.toDateString()} {this.article.date.getHours()}:{this.article.date.getMinutes()}</small>
+                  <small>
+                    {' '}
+                    Published: {this.article.date.toDateString()} {this.article.date.getHours()}:
+                    {this.article.date.getMinutes()}
+                  </small>
                 </div>
                 <br />
               </div>
@@ -56,6 +54,6 @@ export class Preview extends Component<{ art: Article }> {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

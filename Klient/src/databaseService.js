@@ -2,12 +2,11 @@
 
 import * as React from 'react';
 import axios from 'axios';
-import { Article } from './article';
-import { Comment } from './comments';
-import { Category } from './category';
+import { Article } from './methods/article';
+import { Comment } from './methods/comments';
+import { Category } from './mainpages/category';
 
 class DatabaseService {
-
   getImpArticles() {
     return axios
       .get<Article[]>('http://localhost:8080/annonse/viktig')

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { databaseService } from './databaseService';
+import { databaseService } from '../databaseService';
 
 export class Comment {
   commentId: number;
@@ -71,7 +71,8 @@ export class Comments extends Component<{ id: number }> {
               id="inputComment"
               placeholder="Comment..."
               rows="3"
-              onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.comment.text = event.target.value)}/>
+              onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.comment.text = event.target.value)}
+            />
           </div>
           <button type="button" className="btn btn-primary" onClick={this.commentUpload}>
             Publish
@@ -83,7 +84,10 @@ export class Comments extends Component<{ id: number }> {
                 <div className="comments-box">
                   <h5>{e.username}</h5>
                   <p>{e.text}</p>
-                  <small>{e.date.toDateString()} {e.date.getHours()}:{(e.date.getMinutes()<10?'0':'') + e.date.getMinutes()}</small>
+                  <small>
+                    {e.date.toDateString()} {e.date.getHours()}:
+                    {(e.date.getMinutes() < 10 ? '0' : '') + e.date.getMinutes()}
+                  </small>
                 </div>
               ))
             : null}

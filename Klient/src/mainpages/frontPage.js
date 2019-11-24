@@ -2,20 +2,20 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { Alert } from './widgets/Alert';
-import { Article } from './article';
-import { databaseService } from './databaseService';
-import { ArticleDispay } from './articleDispay';
+import { Alert } from '../widgets/Alert';
+import { Article } from '../methods/article';
+import { databaseService } from '../databaseService';
+import { ArticleDispay } from '../methods/articleDispay';
 
-export class All extends Component {
+export class Home extends Component {
   articles: Article[] = [];
   mounted() {
     databaseService
-      .getArticles()
+      .getImpArticles()
       .then(data => {
         console.log(data);
         if (data === null) {
-          Alert.danger('No articles in the database');
+          Alert.danger('No Important articles in the database');
         } else {
           this.articles = data;
         }
@@ -36,7 +36,7 @@ export class All extends Component {
     }
     return (
       <div>
-        <h1 className="title">All articles</h1>
+        <h1 className="title">News</h1>
         <ArticleDispay art={this.articles} />
       </div>
     );

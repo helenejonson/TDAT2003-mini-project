@@ -1,9 +1,10 @@
 // @flow
+
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { ArticleCard } from './card';
 import { Article } from './article';
-import { Up } from './widgets/up';
+import { Up } from '../widgets/up';
 
 export class ArticleDispay extends Component<{ art: Article }> {
   articles: Article[] = [];

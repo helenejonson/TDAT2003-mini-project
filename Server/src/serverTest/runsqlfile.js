@@ -1,5 +1,6 @@
 // @flow
-var mysql = require("mysql");
+
+var mysql = require('mysql');
 var fs = require("fs");
 
 module.exports = function run(filename: string, pool, done) {

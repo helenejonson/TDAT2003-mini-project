@@ -1,4 +1,5 @@
 // @flow
+
 const Dao = require('./dao');
 type article = {
   title: string,

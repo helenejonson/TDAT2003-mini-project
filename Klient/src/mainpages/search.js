@@ -2,14 +2,12 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { Article } from './article';
-import { databaseService } from './databaseService';
-import { Alert } from './widgets/Alert';
-import { ArticleCard } from './card';
+import { Article } from '../methods/article';
+import { databaseService } from '../databaseService';
+import { Alert } from '../widgets/Alert';
+import { ArticleCard } from '../methods/card';
 import { createHashHistory } from 'history';
 import 'easymde/dist/easymde.min.css';
-
-const history = createHashHistory();
 
 export class Search extends Component<{ match: { params: { word: string } } }> {
   articles: Article[] = [];
@@ -54,5 +52,3 @@ export class Search extends Component<{ match: { params: { word: string } } }> {
     }
   }
 }
-
-

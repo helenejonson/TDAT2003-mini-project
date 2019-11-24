@@ -1,13 +1,13 @@
 // @flow
 
-import { Article } from './article';
+import { Article } from '../methods/article';
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import MarkdownRenderer from 'react-markdown-renderer';
-import { databaseService } from './databaseService';
-import { Comments } from './comments';
-import { Delete } from './delete';
-import { Alert } from './widgets/Alert';
+import { databaseService } from '../databaseService';
+import { Comments } from '../methods/comments';
+import { Delete } from '../methods/delete';
+import { Alert } from '../widgets/Alert';
 import { createHashHistory } from 'history';
 
 const history = createHashHistory();
@@ -34,7 +34,7 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
     if (article) {
       return (
         <div>
-          <div class="readArticle">
+          <div className="readArticle">
             <h1 className="articleTitle"> {article.title} </h1>
             <figure>
               <img className="pictureSize" src={article.picturePath} alt={article.pictureAlt} />
@@ -49,7 +49,11 @@ export class Read extends Component<{ match: { params: { id: number } } }> {
               <br />
               <small> Category: {article.category}</small>
               <br />
-              <small> Published: {article.date.toDateString()} {article.date.getHours()}:{(article.date.getMinutes()<10?'0':'') + article.date.getMinutes()}</small>
+              <small>
+                {' '}
+                Published: {article.date.toDateString()} {article.date.getHours()}:
+                {(article.date.getMinutes() < 10 ? '0' : '') + article.date.getMinutes()}
+              </small>
             </div>
             <br />
             <div className="rating">

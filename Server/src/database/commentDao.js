@@ -1,4 +1,5 @@
 // @flow
+
 const Dao = require('./dao');
 type comment = { articleId: number, username: string, text: string };
 

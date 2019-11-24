@@ -1,4 +1,5 @@
 // @flow
+
 const ArticleDao = require('./articleDao');
 const CommentDao = require('./commentDao');
 const CategoryDao = require('./categoryDao');
