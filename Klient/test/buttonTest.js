@@ -3,11 +3,6 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { Up } from '../src/widgets';
-import { shallow, mount } from 'enzyme';
-
-
-
-import * as React from 'react';
 import { shallow, mount, ShallowWrapper } from 'enzyme';
 
 
