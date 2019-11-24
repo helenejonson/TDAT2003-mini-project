@@ -7,28 +7,6 @@ import { shallow, mount, ShallowWrapper } from 'enzyme';
 
 
 
-
-
-
-describe('Button tests', () => {
-  const test = jest.fn();
-  const wrapper = shallow(<Up.btn onClick={test} />);
-
-  it('button click test', () => {
-    expect(typeof wrapper).toEqual('object');
-    expect(wrapper).toHaveLength(1);
-
-    wrapper.find('button.btn').simulate('click');
-    expect(test.mock.calls.length).toEqual(1);
-  });
-
-  it('renders correctly', () => {
-    expect(wrapper.debug()).toMatchSnapshot();
-  });
-});
-
-
-
 describe('Button test', () => {
   const wrapper = shallow(<Up/>);
 
