@@ -3,11 +3,11 @@ import * as React from 'react';
 import { Component } from 'react-simplified';
 import MarkdownRenderer from 'react-markdown-renderer';
 import { databaseService } from './databaseService';
-import { Alert } from './widgets';
+import { Alert } from './widgets/Alert';
 import SimpleMDE from 'react-simplemde-editor';
 import { createHashHistory } from 'history';
 import { Category, categoryList } from './category';
-
+import { Preview } from './preview';
 
 const history = createHashHistory();
 var categories: Category[] = categoryList.categories;
@@ -82,6 +82,7 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
                       </label>
                     </div>
                   </div>
+                  <br/>
                   <div className="row">
                     <label htmlFor="imgPath" className="col col-form-label">
                       Image path from web
@@ -102,6 +103,7 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
                       </small>
                     </div>
                   </div>
+                  <br/>
                   {/*====== image preview ======*/}
                   <div className="card align-items-center p-3 text-center">
                     <img src={this.article.picturePath} className="card-img w-25" alt="[ Preview ]" />
@@ -215,47 +217,7 @@ export class UpdateArticle extends Component<{ match: { params: { id: number } }
                   </div>
                 </div>
                 <br />
-                {/*The dropdown preview display*/}
-                <div>
-                  <p>
-                    <button
-                      className="btn preview-btn"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#collapsePreview"
-                      aria-expanded="false"
-                      aria-controls="collapsePreview"
-                    >
-                      Preview
-                    </button>
-                  </p>
-                  <div className="collapse" id="collapsePreview">
-                    <div className="preview">
-                      <div className="mini-article">
-                        <h4 className="articleTitle"> {this.article.title} </h4>
-                        <figure>
-                          <img
-                            className="pictureSizePreview"
-                            src={this.article.picturePath}
-                            alt={this.article.pictureAlt}
-                          />
-                          <figcaption className="pictureCapt">{this.article.pictureCapt}</figcaption>
-                        </figure>
-                        <br />
-                        <MarkdownRenderer markdown={this.article.text} />
-                        <br />
-                        <div className="articleInfo">
-                          <small> Author: {this.article.author}</small>
-                          <br />
-                          <small> Category: {this.article.category}</small>
-                          <br />
-                          <small> Published: {this.article.date.toLocaleString()}</small>
-                        </div>
-                        <br />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+               <Preview art = {this.article}/>
               </form>
               <button type="submit" className="btn btn-primary" onClick={this.handleUpdate}>
                 Update

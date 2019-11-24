@@ -1,14 +1,14 @@
 // @flow
-
+/*
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { Up } from '../src/widgets';
 import { shallow, mount, ShallowWrapper } from 'enzyme';
 
 
-/**
- * Button tests.
- */
+
+
+
 
 describe('Button tests', () => {
   const test = jest.fn();
@@ -28,7 +28,7 @@ describe('Button tests', () => {
 });
 
 
-/*
+
 describe('Button test', () => {
   const wrapper = shallow(<Up/>);
 

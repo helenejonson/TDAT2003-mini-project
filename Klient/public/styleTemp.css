@@ -36,22 +36,10 @@ body{
 }
 
 .advancedSearch {
-    grid-area: adv;
-    display: inline-block;
-    overflow: hidden;
-    padding: 0px;
-    height: 100%;
-    -webkit-transition: width 0.5s ease-in-out ;
-    -moz-transition: width 0.5s ease-in-out;
-    -ms-transition: width 0.5s ease-in-out;
-    -o-transition: width 0.5s ease-in-out;
-    transition: width 0.5s ease-in-out;
-}
-
-.advancedSearch2 {
     padding: 50px;
     height: 100%;
 }
+
 
 {/*navbar*/}
 
@@ -125,7 +113,7 @@ text-align: right;
 
 }
 
-{/*New Article*/}
+{/*All Article*/}
 
 .importance{
     padding: 20px;

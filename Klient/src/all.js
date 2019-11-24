@@ -2,12 +2,12 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { Alert } from './widgets';
+import { Alert } from './widgets/Alert';
 import { Article } from './article';
 import { databaseService } from './databaseService';
 import { ArticleDispay } from './articleDispay';
 
-export class New extends Component {
+export class All extends Component {
   articles: Article[] = [];
   mounted() {
     databaseService
@@ -36,6 +36,7 @@ export class New extends Component {
     }
     return (
       <div>
+        <h1 className="title">All articles</h1>
         <ArticleDispay art={this.articles} />
       </div>
     );

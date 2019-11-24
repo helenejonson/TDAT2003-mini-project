@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import { ArticleCard } from './card';
-import { Up } from './widgets';
 import { Article } from './article';
+import { Up } from './widgets/up';
 
 export class ArticleDispay extends Component<{ art: Article }> {
   articles: Article[] = [];

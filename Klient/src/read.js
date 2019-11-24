@@ -7,7 +7,7 @@ import MarkdownRenderer from 'react-markdown-renderer';
 import { databaseService } from './databaseService';
 import { Comments } from './comments';
 import { Delete } from './delete';
-import { Alert } from './widgets';
+import { Alert } from './widgets/Alert';
 import { createHashHistory } from 'history';
 
 const history = createHashHistory();

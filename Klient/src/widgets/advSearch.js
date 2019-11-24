@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { Alert } from './widgets';
+import { Alert } from './Alert';
 import { createHashHistory } from 'history';
 import 'easymde/dist/easymde.min.css';
 
@@ -15,8 +15,9 @@ export class AdvSearch extends Component {
   render() {
     return (
       <div>
-        <div className="advancedSearch2" ref={e => (this.blabla = e)}>
+        <div className="advancedSearch" ref={e => (this.blabla = e)}>
           <h3>Search</h3>
+          <br/>
           <div className="form-group">
             <input
               id="title"
@@ -27,8 +28,8 @@ export class AdvSearch extends Component {
               onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.word = event.target.value)}
             />
           </div>
-
-          <button type="button" onClick={this.searchArt} className="btn btn-primary">
+          <br/>
+          <button type="button" onClick={this.searchArt} className="btn btn-info search">
             Search
           </button>
         </div>

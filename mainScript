@@ -1,4 +1,48 @@
+CREATE TABLES
 
+create table annonse(
+id integer not null auto_increment,
+title varchar(100) not null,
+picturePath varchar(250) not null,
+pictureAlt varchar(100) not null,
+pictureCapt varchar(100) not null,
+text varchar(21000) not null,
+date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+author varchar(50) not null,
+category varchar(30) not null,
+importance smallint not null,
+likes integer NOT NULL DEFAULT '0',
+dislikes integer NOT NULL DEFAULT '0',
+PRIMARY KEY (id)
+);
+
+create table comments(
+commentId integer not null auto_increment,
+articleId integer not null,
+username varchar (50) not null,
+text varchar(1000) not null,
+date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY (commentId)
+);
+
+create table category(
+categoryId integer not null auto_increment,
+name varchar(30) not null,
+description varchar (50) not null,
+primary key (categoryId)
+);
+
+CATEGORIES
+insert into category(name, description) values
+    ('Movies', 'Blockbusters and staight to DVD. We cover all'),
+    ('Books', 'Read your way to a new favourite'),
+    ('MTG', 'All new card, lore and how-to'),
+    ('D&D', 'We play Dungeons and Daragons!!!'),
+    ('Anime', 'Kawaii');
+
+
+
+FUN TEST ARTICLES
 insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author, category, importance) values
     ('Critical Role takes over the world', 'https://pmcvariety.files.wordpress.com/2019/03/critical-role-group-shot.jpg?w=1000&h=563&crop=1',  'The cast of Critical Role sitting on a couch','The cast of critical role have seen huge sucsess since they started their own company',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Laoreet id donec ultrices tincidunt arcu non sodales neque. Ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit. Parturient montes nascetur ridiculus mus mauris vitae ultricies leo integer. Quam elementum pulvinar etiam non. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Amet mauris commodo quis imperdiet massa tincidunt nunc. Porta nibh venenatis cras sed felis. Aliquet nibh praesent tristique magna sit amet purus. Sapien et ligula ullamcorper malesuada proin libero nunc. Dui accumsan sit amet nulla facilisi morbi tempus iaculis. Habitasse platea dictumst quisque sagittis purus. Ultrices neque ornare aenean euismod elementum nisi quis. Lorem ipsum dolor sit amet consectetur. Arcu felis bibendum ut tristique. Nam libero justo laoreet sit. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant.
@@ -41,4 +85,3 @@ insert into annonse ( title, picturePath, pictureAlt, pictureCapt, text, author,
                    Ac odio tempor orci dapibus ultrices in. Sed velit dignissim sodales ut eu sem integer vitae justo. Elementum curabitur vitae nunc sed velit dignissim. Consequat id porta nibh venenatis cras sed. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Ante metus dictum at tempor. Cursus risus at ultrices mi tempus imperdiet nulla. Diam quis enim lobortis scelerisque fermentum. Venenatis cras sed felis eget velit aliquet. Curabitur vitae nunc sed velit. Neque aliquam vestibulum morbi blandit cursus risus at. Magna eget est lorem ipsum dolor. Eget nullam non nisi est sit amet facilisis. Erat pellentesque adipiscing commodo elit at imperdiet dui accumsan sit.
                    Quisque id diam vel quam elementum. Elementum pulvinar etiam non quam lacus suspendisse. Placerat orci nulla pellentesque dignissim enim sit amet. Sem et tortor consequat id porta nibh venenatis cras. Fames ac turpis egestas sed tempus urna et pharetra pharetra. Justo eget magna fermentum iaculis eu. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. Gravida arcu ac tortor dignissim. Tortor consequat id porta nibh venenatis cras sed. Molestie at elementum eu facilisis sed odio. Cras semper auctor neque vitae tempus quam pellentesque. Dictumst vestibulum rhoncus est pellentesque elit. Vestibulum lorem sed risus ultricies. Mauris cursus mattis molestie a iaculis at erat pellentesque adipiscing. Placerat vestibulum lectus mauris ultrices. Quis blandit turpis cursus in.'
                     , 'Kari Normann', 'Books',2);
-

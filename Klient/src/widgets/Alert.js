@@ -4,22 +4,6 @@ import * as React from 'react';
 import { Component } from 'react-simplified';
 import { createHashHistory } from 'history';
 
-export class Up extends Component {
-  render() {
-    return (
-      <div>
-        <button type="button" className="btn btn-info up" onClick={this.toTop}>
-          To the {<div> top </div>}
-        </button>
-      </div>
-    );
-  }
-
-  toTop() {
-    document.documentElement.scrollTop = 0;
-  }
-}
-
 export class Alert extends Component {
   alerts: { id: number, text: React.Node, type: string }[] = [];
   static nextId = 0;

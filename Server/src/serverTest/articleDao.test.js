@@ -136,11 +136,11 @@ let articleDao = new ArticleDao(pool);
 
         articleDao.createArticle(
             {
-                title: "New title",
-                picturePath: "New path",
-                pictureAlt: "New alt",
-                pictureCapt: "New capt",
-                text: "New text",
+                title: "All title",
+                picturePath: "All path",
+                pictureAlt: "All alt",
+                pictureCapt: "All capt",
+                text: "All text",
                 author: "My Name",
                 category: "Movies",
                 importance: 2
@@ -173,7 +173,7 @@ test("update article", done => {
     }
 
     articleDao.updateArticle(
-      {title: "New Title", picturePath: "New picturePath", pictureAlt: "New pictureAlt", pictureCapt: "New pictureCapt", text: "Updated Text", author: "ME", category: "D&D", importance: 1, id: 4}
+      {title: "All Title", picturePath: "All picturePath", pictureAlt: "All pictureAlt", pictureCapt: "All pictureCapt", text: "Updated Text", author: "ME", category: "D&D", importance: 1, id: 4}
       , callback);
 });
 

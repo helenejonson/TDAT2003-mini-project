@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Component } from 'react-simplified';
-import { Alert } from './widgets';
+import { Alert } from './widgets/Alert';
 import { Article } from './article';
 import { databaseService } from './databaseService';
 import { ArticleDispay } from './articleDispay';
@@ -36,6 +36,7 @@ export class Home extends Component {
     }
     return (
       <div>
+        <h1 className="title">News</h1>
         <ArticleDispay art={this.articles} />
       </div>
     );

@@ -7,20 +7,20 @@ import { HashRouter, Route, NavLink } from 'react-router-dom';
 import { Home } from './frontPage.js';
 import { Read } from './read.js';
 import { CreateArticle } from './createArticle.js';
-import { AdvSearch } from './advSearch';
+import { AdvSearch } from './widgets/advSearch';
 import { logIn } from './logIn';
 import { Register } from './logIn';
 import { categoryList, f } from './category';
 import { CategoryArt } from './category';
 import { Newsfeed } from './newsfeed';
-import { New } from './new';
-import { Alert } from './widgets';
+import { All } from './all';
+import { Alert } from './widgets/Alert';
 import { UpdateArticle } from './updateArticle';
 import { Search } from './search';
 import { createHashHistory } from 'history';
+import { SearchBar } from './widgets/searchBar';
 
 const root = document.getElementById('root');
-const history = createHashHistory();
 
 export class Head extends Component {
   render() {
@@ -49,7 +49,7 @@ export class Menu extends Component {
           <ul className="navbar-nav">
             <li className="nav-item">
               <NavLink className="nav-link new" style={{ color: 'red' }} activeStyle={{ color: 'darkgray' }} to="/New">
-                New
+                All
               </NavLink>
             </li>
             <li className="nav-item">
@@ -63,8 +63,13 @@ export class Menu extends Component {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link adv_search" style={{ color: 'red' }} activeStyle={{ color: 'darkgray' }} to="/search">
-                Advanced search
+              <NavLink
+                className="nav-link adv_search"
+                style={{ color: 'red' }}
+                activeStyle={{ color: 'darkgray' }}
+                to="/search"
+              >
+                Search
               </NavLink>
             </li>
             <li className="nav-item dropdown">
@@ -104,30 +109,14 @@ export class Menu extends Component {
           </ul>
           <ul className="navbar-nav ml-auto">
             <form className="form-inline my-2 my-lg-0">
-              <input
-                className="form-control mr-sm-2 searchInput"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                onChange={(event: SyntheticInputEvent<HTMLInputElement>) => (this.word = event.target.value)}
-              />
-              <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={this.searchArt}>
-                Search
-              </button>
+              <SearchBar />
             </form>
           </ul>
         </nav>
         <Newsfeed />
-        <br />
+        <br/>
       </div>
     );
-  }
-  searchArt() {
-    if (this.word != null) {
-      history.push('/search/' + this.word);
-    } else {
-      Alert.danger('Insert search value');
-    }
   }
 }
 
@@ -137,6 +126,7 @@ export class Foot extends Component {
       <div>
         <div className="footer">
           <div className="footer-text">
+            
             <h4>Contacts: </h4>
             <ul>
               <li>Creator: Helene Jonson</li>
@@ -171,7 +161,7 @@ if (root)
         <Route exact path="/logIn" component={logIn} />
         <Route exact path="/Register" component={Register} />
         <Route exact path="/category/:name" component={CategoryArt} />
-        <Route exact path="/New" component={New} />
+        <Route exact path="/New" component={All} />
         <Route exact path="/search/:word" component={Search} />
         <Foot />
       </HashRouter>
